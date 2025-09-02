@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: presence-frontend-deployment
+  labels:
+    app: presence-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: presence-frontend
+  template:
+    metadata:
+      labels:
+        app: presence-frontend
+    spec:
+      containers:
+        - name: presence-frontend
+          image: presence-frontend:latest # IMPORTANT: You must build the docker image first
+          imagePullPolicy: IfNotPresent # Use local image
+          ports:
+            - containerPort: 3000
+          env:
+            - name: REACT_APP_API_URL
+              value: "http://localhost:31152"

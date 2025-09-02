@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: presence-backend-deployment
+  labels:
+    app: presence-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: presence-backend
+  template:
+    metadata:
+      labels:
+        app: presence-backend
+    spec:
+      containers:
+        - name: presence-backend
+          image: presence-backend:latest # IMPORTANT: You must build the docker image first
+          imagePullPolicy: IfNotPresent # Use local image
+          ports:
+            - containerPort: 8000
+          volumeMounts:
+            - name: db-storage
+              mountPath: /data
+      volumes:
+        - name: db-storage
+          persistentVolumeClaim:
+            claimName: presence-db-pvc
