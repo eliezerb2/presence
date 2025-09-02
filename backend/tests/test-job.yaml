@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: backend-test-job
+  namespace: test-namespace
+spec:
+  template:
+    spec:
+      containers:
+      - name: backend-tests
+        image: presence-backend
+        imagePullPolicy: Never
+        command: ["pytest"]
+        env:
+        - name: DATABASE_URL
+          value: postgresql+psycopg://user:password@presence-app-release-postgresql.presence-namespace.svc.cluster.local:5432/presence_db
+        - name: PYTHONPATH
+          value: "/app"
+      restartPolicy: Never
+  backoffLimit: 4

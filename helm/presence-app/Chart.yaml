@@ -1,0 +1,24 @@
+apiVersion: v2
+name: presence-app
+description: A Helm chart for Kubernetes
+
+# A chart can be either an application or a library chart.
+#
+# Application charts are a collection of templates that can be packaged into a Kubernetes application.
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to extend the capabilities of the chart.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+version: 0.1.0
+
+# This is the version number of the application being deployed. This value is
+# translated to the .Chart.AppVersion object.
+appVersion: "1.16.0"
+
+dependencies:
+  - name: postgresql
+    version: "15.x.x" # Use a compatible version, check Bitnami's chart versions
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled
