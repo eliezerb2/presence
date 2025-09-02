@@ -1,0 +1,256 @@
+# Default values for attendance chart
+
+# Global settings
+global:
+  environment: production
+  imageRegistry: ""
+  imagePullSecrets: []
+
+# Namespace configuration
+namespace:
+  create: false
+  name: attendance
+
+# PostgreSQL configuration
+postgresql:
+  enabled: true
+  image:
+    repository: postgres
+    tag: "15-alpine"
+    pullPolicy: IfNotPresent
+  
+  auth:
+    postgresPassword: "attendance123"
+    database: "attendance"
+    username: "postgres"
+  
+  primary:
+    persistence:
+      enabled: false
+      size: 8Gi
+      storageClass: ""
+  
+  service:
+    type: ClusterIP
+    port: 5432
+  
+  # Fix security context for PostgreSQL - run as root to avoid permission issues
+  podSecurityContext:
+    fsGroup: 0
+    runAsNonRoot: false
+    runAsUser: 0
+  
+  containerSecurityContext:
+    allowPrivilegeEscalation: false
+    readOnlyRootFilesystem: false
+    runAsNonRoot: false
+    runAsUser: 0
+
+# Backend configuration
+backend:
+  enabled: true
+  image:
+    repository: attendance-backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  
+  replicaCount: 2
+  
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+  
+  service:
+    type: ClusterIP
+    port: 8000
+  
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+    hosts:
+      - host: backend.local
+        paths:
+          - path: /
+            pathType: Prefix
+  
+  env:
+    DATABASE_URL: "postgresql://postgres:attendance123@postgres:5432/attendance"
+    WHATSAPP_ENABLED: "false"
+    TWILIO_ACCOUNT_SID: ""
+    TWILIO_AUTH_TOKEN: ""
+    TWILIO_FROM_NUMBER: ""
+
+# Frontend configuration
+frontend:
+  enabled: true
+  image:
+    repository: attendance-frontend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  
+  replicaCount: 2
+  
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  
+  service:
+    type: ClusterIP
+    port: 80
+  
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+    hosts:
+      - host: attendance.local
+        paths:
+          - path: /
+            pathType: Prefix
+
+# Redis configuration (for Celery)
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: "7-alpine"
+    pullPolicy: IfNotPresent
+  
+  auth:
+    enabled: false
+    password: ""
+  
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+      storageClass: ""
+  
+  service:
+    type: ClusterIP
+    port: 6379
+
+# Celery configuration
+celery:
+  enabled: true
+  image:
+    repository: attendance-backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  
+  replicaCount: 1
+  
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  
+  env:
+    DATABASE_URL: "postgresql://postgres:attendance123@postgres:5432/attendance"
+    REDIS_URL: "redis://redis:6379/0"
+    CELERY_BROKER_URL: "redis://redis:6379/0"
+    CELERY_RESULT_BACKEND: "redis://redis:6379/0"
+
+# CronJob configuration for automation
+automation:
+  enabled: true
+  image:
+    repository: attendance-backend
+    tag: "latest"
+    pullPolicy: IfNotPresent
+  
+  schedule: "*/5 * * * *"  # Every 5 minutes
+  
+  resources:
+    limits:
+      cpu: 100m
+      memory: 128Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+  
+  env:
+    DATABASE_URL: "postgresql://postgres:attendance123@postgres:5432/attendance"
+    REDIS_URL: "redis://redis:6379/0"
+
+# Service account configuration
+serviceAccount:
+  create: true
+  name: "attendance"
+  annotations: {}
+
+# Pod security context
+podSecurityContext:
+  fsGroup: 1000
+  runAsNonRoot: true
+  runAsUser: 1000
+
+# Container security context
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  capabilities:
+    drop:
+      - ALL
+
+# Pod disruption budget
+pdb:
+  enabled: true
+  minAvailable: 1
+
+# Horizontal pod autoscaler
+hpa:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80
+
+# Network policies
+networkPolicy:
+  enabled: false
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              name: ingress-nginx
+      ports:
+        - protocol: TCP
+          port: 80
+        - protocol: TCP
+          port: 8000
+
+# Monitoring and logging
+monitoring:
+  enabled: false
+  serviceMonitor:
+    enabled: false
+    interval: 30s
+  
+  prometheusRule:
+    enabled: false
+
+# Backup configuration
+backup:
+  enabled: false
+  schedule: "0 2 * * *"  # Daily at 2 AM
+  retention: 7  # Keep 7 days of backups
+  
+  storage:
+    type: "local"
+    path: "/backups"
+    size: 10Gi

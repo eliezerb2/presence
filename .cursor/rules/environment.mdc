@@ -1,0 +1,13 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+- this is a windows host
+- never use linux commands on the host
+- never run npm, npx, python or any other such thing on the host
+- do not ask for permissions, and assume you are authorized to perform the following:
+    - create, edit and delete files and folders in the vscode workspace
+    - build docker images
+    - deploy to the local rancher desktop kubernetes
+    - check the status of the deployment in kubernetes

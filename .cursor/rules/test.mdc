@@ -1,0 +1,14 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+- all tests should be performed in a kubernetes deployment
+- define unit tests for all methods and use them to test the all methods
+- define integration tests for all services and use them to test all services
+- define end to end tests for the entire system and use them to test the entire system
+- run the end to end tests from a pod in another namespace
+- generate test data for the tests
+- use mocking and stubbing where necessary
+- generate manual test scripts

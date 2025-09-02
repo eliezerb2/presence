@@ -1,0 +1,16 @@
+apiVersion: v2
+name: attendance
+description: A Helm chart for School Attendance System
+type: application
+version: 1.0.0
+appVersion: "1.0.0"
+keywords:
+  - attendance
+  - school
+  - education
+home: https://github.com/example/school-attendance
+sources:
+  - https://github.com/example/school-attendance
+maintainers:
+  - name: School Admin
+    email: admin@school.edu

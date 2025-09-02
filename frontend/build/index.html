@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת נוכחות בית ספר</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            direction: rtl;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .nav {
+            background: #f8f9fa;
+            padding: 15px 30px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .nav a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 0 10px;
+            text-decoration: none;
+            color: #495057;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+        .nav a.active {
+            background: #667eea;
+            color: white;
+        }
+        .content {
+            padding: 30px;
+            min-height: 400px;
+        }
+        .section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+        .section h2 {
+            color: #495057;
+            margin-top: 0;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #495057;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #5a6fd8;
+        }
+        .btn-secondary {
+            background: #6c757d;
+        }
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+        .message {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .student-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+        }
+        .student-item {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        .student-item:hover {
+            background: #f8f9fa;
+        }
+        .student-item:last-child {
+            border-bottom: none;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>מערכת נוכחות בית ספר</h1>
+            <p>School Attendance System</p>
+        </div>
+        
+        <div class="nav">
+            <a href="#" class="nav-link active" data-section="kiosk">קיוסק תלמידים</a>
+            <a href="#" class="nav-link" data-section="manager">לוח מנהל</a>
+            <a href="#" class="nav-link" data-section="admin">ניהול מערכת</a>
+        </div>
+        
+        <div class="content">
+            <!-- Kiosk Section -->
+            <div id="kiosk" class="section">
+                <h2>קיוסק תלמידים</h2>
+                <div class="form-group">
+                    <label for="searchType">סוג חיפוש:</label>
+                    <select id="searchType">
+                        <option value="id">תעודת זהות</option>
+                        <option value="name">שם מלא</option>
+                        <option value="phone">מספר טלפון</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="searchValue">ערך חיפוש:</label>
+                    <input type="text" id="searchValue" placeholder="הזן ערך חיפוש...">
+                </div>
+                <button class="btn" onclick="searchStudent()">חפש תלמיד</button>
+                
+                <div id="searchResults" class="student-list hidden"></div>
+                
+                <div id="studentActions" class="hidden">
+                    <h3>פעולות נוכחות</h3>
+                    <div id="selectedStudentInfo"></div>
+                    <button class="btn" onclick="checkIn()">התחלת יום</button>
+                    <button class="btn btn-secondary" onclick="checkOut()">סיום יום</button>
+                </div>
+                
+                <div id="message"></div>
+            </div>
+            
+            <!-- Manager Section -->
+            <div id="manager" class="section hidden">
+                <h2>לוח מנהל</h2>
+                <div class="form-group">
+                    <label for="managerDate">תאריך:</label>
+                    <input type="date" id="managerDate">
+                </div>
+                <button class="btn" onclick="loadDailySummary()">טען סיכום יומי</button>
+                
+                <div id="dailySummary"></div>
+                
+                <h3>עדכון נוכחות</h3>
+                <div class="form-group">
+                    <label for="studentId">תעודת זהות תלמיד:</label>
+                    <input type="text" id="studentId">
+                </div>
+                <div class="form-group">
+                    <label for="attendanceStatus">סטטוס נוכחות:</label>
+                    <select id="attendanceStatus">
+                        <option value="present">נוכח</option>
+                        <option value="absent">נעדר</option>
+                        <option value="late">מאחר</option>
+                        <option value="yom_lo_ba_li">יום לא בא לי</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="updateAttendance()">עדכן נוכחות</button>
+            </div>
+            
+            <!-- Admin Section -->
+            <div id="admin" class="section hidden">
+                <h2>ניהול מערכת</h2>
+                <div class="form-group">
+                    <label for="adminAction">פעולה:</label>
+                    <select id="adminAction">
+                        <option value="process_claims">עיבוד תביעות חודשיות</option>
+                        <option value="system_status">סטטוס מערכת</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="executeAdminAction()">בצע פעולה</button>
+                
+                <div id="adminResults"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = e.target.dataset.section;
+                showSection(section);
+                
+                // Update active nav
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                e.target.classList.add('active');
+            });
+        });
+
+        function showSection(sectionName) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionName).classList.remove('hidden');
+        }
+
+        // Set today's date for manager section
+        document.getElementById('managerDate').value = new Date().toISOString().split('T')[0];
+
+        // Mock functions for demonstration
+        function searchStudent() {
+            const searchType = document.getElementById('searchType').value;
+            const searchValue = document.getElementById('searchValue').value;
+            
+            if (!searchValue) {
+                showMessage('אנא הזן ערך חיפוש', 'error');
+                return;
+            }
+            
+            // Mock search results
+            const mockStudents = [
+                { id: '123456789', name: 'יוסי כהן', grade: 'י"ב', phone: '050-1234567' },
+                { id: '987654321', name: 'שרה לוי', grade: 'י"א', phone: '052-7654321' }
+            ];
+            
+            displaySearchResults(mockStudents);
+        }
+
+        function displaySearchResults(students) {
+            const resultsDiv = document.getElementById('searchResults');
+            resultsDiv.innerHTML = '';
+            
+            students.forEach(student => {
+                const studentDiv = document.createElement('div');
+                studentDiv.className = 'student-item';
+                studentDiv.innerHTML = `
+                    <strong>${student.name}</strong> - ${student.grade}<br>
+                    תעודת זהות: ${student.id} | טלפון: ${student.phone}
+                `;
+                studentDiv.onclick = () => selectStudent(student);
+                resultsDiv.appendChild(studentDiv);
+            });
+            
+            resultsDiv.classList.remove('hidden');
+        }
+
+        function selectStudent(student) {
+            document.getElementById('selectedStudentInfo').innerHTML = `
+                <strong>תלמיד נבחר:</strong> ${student.name} (${student.grade})<br>
+                תעודת זהות: ${student.id}
+            `;
+            document.getElementById('studentActions').classList.remove('hidden');
+        }
+
+        function checkIn() {
+            showMessage('התחלת יום בוצעה בהצלחה', 'success');
+        }
+
+        function checkOut() {
+            showMessage('סיום יום בוצע בהצלחה', 'success');
+        }
+
+        function loadDailySummary() {
+            const date = document.getElementById('managerDate').value;
+            document.getElementById('dailySummary').innerHTML = `
+                <h4>סיכום יומי - ${date}</h4>
+                <p>סה"כ תלמידים: 150</p>
+                <p>נוכחים: 142</p>
+                <p>נעדרים: 5</p>
+                <p>מאחרים: 3</p>
+            `;
+        }
+
+        function updateAttendance() {
+            const studentId = document.getElementById('studentId').value;
+            const status = document.getElementById('attendanceStatus').value;
+            
+            if (!studentId) {
+                showMessage('אנא הזן תעודת זהות', 'error');
+                return;
+            }
+            
+            showMessage(`עדכון נוכחות בוצע: ${studentId} - ${status}`, 'success');
+        }
+
+        function executeAdminAction() {
+            const action = document.getElementById('adminAction').value;
+            
+            if (action === 'process_claims') {
+                document.getElementById('adminResults').innerHTML = `
+                    <h4>עיבוד תביעות חודשיות</h4>
+                    <p>עיבוד הושלם בהצלחה</p>
+                    <p>תביעות שנוצרו: 12</p>
+                `;
+            } else if (action === 'system_status') {
+                document.getElementById('adminResults').innerHTML = `
+                    <h4>סטטוס מערכת</h4>
+                    <p>מסד נתונים: פעיל</p>
+                    <p>שירותי אוטומציה: פעילים</p>
+                    <p>תלמידים במערכת: 1,250</p>
+                `;
+            }
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="message ${type}">${text}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

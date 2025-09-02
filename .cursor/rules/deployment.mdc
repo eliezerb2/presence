@@ -1,0 +1,13 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+- never deploy anything to the host
+- never use docker-compose
+- always deploy to the local rancher desktop kubernetes
+- use a dedicated kubernetes namespace and never use the default namespace
+- use helm to deploy the application and create all necessary kubernetes resources
+- always uninstall the helm chart and verify that all application resources are deleted before redeploying the helm chart
+- when waiting for a deployment, make sure it is running and not crashing

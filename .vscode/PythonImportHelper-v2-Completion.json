@@ -1,0 +1,2094 @@
+[
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "APIRouter",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Depends",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "FastAPI",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "HTTPException",
+        "importPath": "fastapi",
+        "description": "fastapi",
+        "isExtraImport": true,
+        "detail": "fastapi",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "relationship",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "sessionmaker",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "Session",
+        "importPath": "sqlalchemy.orm",
+        "description": "sqlalchemy.orm",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.orm",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "Optional",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "List",
+        "importPath": "typing",
+        "description": "typing",
+        "isExtraImport": true,
+        "detail": "typing",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "time",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "date",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "datetime",
+        "importPath": "datetime",
+        "description": "datetime",
+        "isExtraImport": true,
+        "detail": "datetime",
+        "documentation": {}
+    },
+    {
+        "label": "and_",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "and_",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "extract",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "or_",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "and_",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Column",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Integer",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "String",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Date",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "DateTime",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Boolean",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "Text",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "ForeignKey",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "UniqueConstraint",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "CheckConstraint",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "create_engine",
+        "importPath": "sqlalchemy",
+        "description": "sqlalchemy",
+        "isExtraImport": true,
+        "detail": "sqlalchemy",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "declarative_base",
+        "importPath": "sqlalchemy.ext.declarative",
+        "description": "sqlalchemy.ext.declarative",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.ext.declarative",
+        "documentation": {}
+    },
+    {
+        "label": "StaticPool",
+        "importPath": "sqlalchemy.pool",
+        "description": "sqlalchemy.pool",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.pool",
+        "documentation": {}
+    },
+    {
+        "label": "StaticPool",
+        "importPath": "sqlalchemy.pool",
+        "description": "sqlalchemy.pool",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.pool",
+        "documentation": {}
+    },
+    {
+        "label": "CORSMiddleware",
+        "importPath": "fastapi.middleware.cors",
+        "description": "fastapi.middleware.cors",
+        "isExtraImport": true,
+        "detail": "fastapi.middleware.cors",
+        "documentation": {}
+    },
+    {
+        "label": "JSONResponse",
+        "importPath": "fastapi.responses",
+        "description": "fastapi.responses",
+        "isExtraImport": true,
+        "detail": "fastapi.responses",
+        "documentation": {}
+    },
+    {
+        "label": "asynccontextmanager",
+        "importPath": "contextlib",
+        "description": "contextlib",
+        "isExtraImport": true,
+        "detail": "contextlib",
+        "documentation": {}
+    },
+    {
+        "label": "uvicorn",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "uvicorn",
+        "description": "uvicorn",
+        "detail": "uvicorn",
+        "documentation": {}
+    },
+    {
+        "label": "func",
+        "importPath": "sqlalchemy.sql",
+        "description": "sqlalchemy.sql",
+        "isExtraImport": true,
+        "detail": "sqlalchemy.sql",
+        "documentation": {}
+    },
+    {
+        "label": "enum",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "enum",
+        "description": "enum",
+        "detail": "enum",
+        "documentation": {}
+    },
+    {
+        "label": "BaseModel",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "Field",
+        "importPath": "pydantic",
+        "description": "pydantic",
+        "isExtraImport": true,
+        "detail": "pydantic",
+        "documentation": {}
+    },
+    {
+        "label": "pytest",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pytest",
+        "description": "pytest",
+        "detail": "pytest",
+        "documentation": {}
+    },
+    {
+        "label": "Mock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "Mock",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "patch",
+        "importPath": "unittest.mock",
+        "description": "unittest.mock",
+        "isExtraImport": true,
+        "detail": "unittest.mock",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "importPath": "app.database",
+        "description": "app.database",
+        "isExtraImport": true,
+        "detail": "app.database",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Attendance",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsence",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHoliday",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "StudentMonthlyOverride",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Claim",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AuditLog",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Attendance",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceStatus",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SubStatus",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ReportedBy",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ClosedReason",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsence",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHoliday",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolLevel",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ActivityStatus",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceStatus",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SubStatus",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ReportedBy",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Weekday",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimReason",
+        "importPath": "app.models",
+        "description": "app.models",
+        "isExtraImport": true,
+        "detail": "app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceService",
+        "importPath": "app.services.attendance_service",
+        "description": "app.services.attendance_service",
+        "isExtraImport": true,
+        "detail": "app.services.attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceService",
+        "importPath": "app.services.attendance_service",
+        "description": "app.services.attendance_service",
+        "isExtraImport": true,
+        "detail": "app.services.attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceCreate",
+        "importPath": "app.schemas",
+        "description": "app.schemas",
+        "isExtraImport": true,
+        "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceUpdate",
+        "importPath": "app.schemas",
+        "description": "app.schemas",
+        "isExtraImport": true,
+        "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentCreate",
+        "importPath": "app.schemas",
+        "description": "app.schemas",
+        "isExtraImport": true,
+        "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceCreate",
+        "importPath": "app.schemas",
+        "description": "app.schemas",
+        "isExtraImport": true,
+        "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsenceCreate",
+        "importPath": "app.schemas",
+        "description": "app.schemas",
+        "isExtraImport": true,
+        "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHolidayCreate",
+        "importPath": "app.schemas",
+        "description": "app.schemas",
+        "isExtraImport": true,
+        "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SettingsUpdate",
+        "importPath": "app.schemas",
+        "description": "app.schemas",
+        "isExtraImport": true,
+        "detail": "app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentService",
+        "importPath": "app.services.student_service",
+        "description": "app.services.student_service",
+        "isExtraImport": true,
+        "detail": "app.services.student_service",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimsService",
+        "importPath": "app.services.claims_service",
+        "description": "app.services.claims_service",
+        "isExtraImport": true,
+        "detail": "app.services.claims_service",
+        "documentation": {}
+    },
+    {
+        "label": "WhatsAppService",
+        "importPath": "app.services.whatsapp_service",
+        "description": "app.services.whatsapp_service",
+        "isExtraImport": true,
+        "detail": "app.services.whatsapp_service",
+        "documentation": {}
+    },
+    {
+        "label": "create_student",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def create_student(student_data: StudentCreate, db: Session = Depends(get_db)):\n    \"\"\"Create a new student\"\"\"\n    student_service = StudentService(db)\n    # Check if student number or nickname already exists\n    if student_service.get_student_by_number(student_data.student_number):\n        raise HTTPException(status_code=400, detail=\"Student number already exists\")\n    if student_service.get_student_by_nickname(student_data.nickname):\n        raise HTTPException(status_code=400, detail=\"Nickname already exists\")\n    student = student_service.create_student(student_data)\n    return {",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "update_student",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def update_student(\n    student_id: int, \n    update_data: StudentUpdate, \n    db: Session = Depends(get_db)\n):\n    \"\"\"Update a student\"\"\"\n    student_service = StudentService(db)\n    # Check if student exists\n    existing_student = student_service.get_student(student_id)\n    if not existing_student:",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "delete_student",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def delete_student(student_id: int, db: Session = Depends(get_db)):\n    \"\"\"Delete a student (soft delete)\"\"\"\n    student_service = StudentService(db)\n    success = student_service.delete_student(student_id)\n    if not success:\n        raise HTTPException(status_code=404, detail=\"Student not found\")\n    return MessageResponse(message=\"Student deleted successfully\")\n# Permanent absences management\n@router.post(\"/permanent-absences\", response_model=dict)\ndef create_permanent_absence(",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "create_permanent_absence",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def create_permanent_absence(\n    absence_data: PermanentAbsenceCreate, \n    db: Session = Depends(get_db)\n):\n    \"\"\"Create a new permanent absence\"\"\"\n    # Check if student exists\n    student_service = StudentService(db)\n    student = student_service.get_student(absence_data.student_id)\n    if not student:\n        raise HTTPException(status_code=404, detail=\"Student not found\")",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "update_permanent_absence",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def update_permanent_absence(\n    absence_id: int,\n    update_data: PermanentAbsenceUpdate,\n    db: Session = Depends(get_db)\n):\n    \"\"\"Update a permanent absence\"\"\"\n    absence = db.query(PermanentAbsence).filter(PermanentAbsence.id == absence_id).first()\n    if not absence:\n        raise HTTPException(status_code=404, detail=\"Permanent absence not found\")\n    # Update fields",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "delete_permanent_absence",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def delete_permanent_absence(absence_id: int, db: Session = Depends(get_db)):\n    \"\"\"Delete a permanent absence\"\"\"\n    absence = db.query(PermanentAbsence).filter(PermanentAbsence.id == absence_id).first()\n    if not absence:\n        raise HTTPException(status_code=404, detail=\"Permanent absence not found\")\n    db.delete(absence)\n    db.commit()\n    return MessageResponse(message=\"Permanent absence deleted successfully\")\n# School holidays management\n@router.post(\"/holidays\", response_model=dict)",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "create_school_holiday",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def create_school_holiday(\n    holiday_data: SchoolHolidayCreate,\n    db: Session = Depends(get_db)\n):\n    \"\"\"Create a new school holiday\"\"\"\n    # Check if holiday already exists for this date\n    existing = db.query(SchoolHoliday).filter(\n        SchoolHoliday.date == holiday_data.date\n    ).first()\n    if existing:",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "update_school_holiday",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def update_school_holiday(\n    holiday_id: int,\n    update_data: SchoolHolidayUpdate,\n    db: Session = Depends(get_db)\n):\n    \"\"\"Update a school holiday\"\"\"\n    holiday = db.query(SchoolHoliday).filter(SchoolHoliday.id == holiday_id).first()\n    if not holiday:\n        raise HTTPException(status_code=404, detail=\"School holiday not found\")\n    # Update fields",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "delete_school_holiday",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def delete_school_holiday(holiday_id: int, db: Session = Depends(get_db)):\n    \"\"\"Delete a school holiday\"\"\"\n    holiday = db.query(SchoolHoliday).filter(SchoolHoliday.id == holiday_id).first()\n    if not holiday:\n        raise HTTPException(status_code=404, detail=\"School holiday not found\")\n    db.delete(holiday)\n    db.commit()\n    return MessageResponse(message=\"School holiday deleted successfully\")\n# Settings management\n@router.get(\"/settings\", response_model=dict)",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "get_settings",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def get_settings(db: Session = Depends(get_db)):\n    \"\"\"Get current system settings\"\"\"\n    settings = db.query(Settings).first()\n    if not settings:\n        # Create default settings\n        settings = Settings()\n        db.add(settings)\n        db.commit()\n        db.refresh(settings)\n    return {",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "update_settings",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def update_settings(\n    update_data: SettingsUpdate,\n    db: Session = Depends(get_db)\n):\n    \"\"\"Update system settings\"\"\"\n    settings = db.query(Settings).first()\n    if not settings:\n        # Create settings if they don't exist\n        settings = Settings()\n        db.add(settings)",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "create_monthly_override",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def create_monthly_override(\n    override_data: StudentMonthlyOverrideCreate,\n    db: Session = Depends(get_db)\n):\n    \"\"\"Create a new monthly override for a student\"\"\"\n    # Check if student exists\n    student_service = StudentService(db)\n    student = student_service.get_student(override_data.student_id)\n    if not student:\n        raise HTTPException(status_code=404, detail=\"Student not found\")",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "update_monthly_override",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def update_monthly_override(\n    override_id: int,\n    update_data: StudentMonthlyOverrideUpdate,\n    db: Session = Depends(get_db)\n):\n    \"\"\"Update a monthly override\"\"\"\n    override = db.query(StudentMonthlyOverride).filter(\n        StudentMonthlyOverride.id == override_id\n    ).first()\n    if not override:",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "delete_monthly_override",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def delete_monthly_override(override_id: int, db: Session = Depends(get_db)):\n    \"\"\"Delete a monthly override\"\"\"\n    override = db.query(StudentMonthlyOverride).filter(\n        StudentMonthlyOverride.id == override_id\n    ).first()\n    if not override:\n        raise HTTPException(status_code=404, detail=\"Monthly override not found\")\n    db.delete(override)\n    db.commit()\n    return MessageResponse(message=\"Monthly override deleted successfully\")",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "process_monthly_claims",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def process_monthly_claims(year_month: str, db: Session = Depends(get_db)):\n    \"\"\"Process monthly claims for a specific month\"\"\"\n    claims_service = ClaimsService(db)\n    try:\n        # Validate format YYYY-MM\n        from datetime import datetime\n        datetime.strptime(year_month, \"%Y-%m\")\n    except ValueError:\n        raise HTTPException(status_code=400, detail=\"Invalid year-month format. Use YYYY-MM\")\n    created_claims = claims_service.process_monthly_claims(year_month)",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "get_system_status",
+        "kind": 2,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "def get_system_status(db: Session = Depends(get_db)):\n    \"\"\"Get overall system status\"\"\"\n    student_service = StudentService(db)\n    claims_service = ClaimsService(db)\n    # Get counts\n    student_counts = student_service.count_students_by_school_level()\n    claims_summary = claims_service.get_claims_summary()\n    # Get settings\n    settings = db.query(Settings).first()\n    return {",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.admin",
+        "description": "backend.app.api.admin",
+        "peekOfCode": "router = APIRouter(prefix=\"/admin\", tags=[\"admin\"])\n# Student management\n@router.post(\"/students\", response_model=dict)\ndef create_student(student_data: StudentCreate, db: Session = Depends(get_db)):\n    \"\"\"Create a new student\"\"\"\n    student_service = StudentService(db)\n    # Check if student number or nickname already exists\n    if student_service.get_student_by_number(student_data.student_number):\n        raise HTTPException(status_code=400, detail=\"Student number already exists\")\n    if student_service.get_student_by_nickname(student_data.nickname):",
+        "detail": "backend.app.api.admin",
+        "documentation": {}
+    },
+    {
+        "label": "search_students",
+        "kind": 2,
+        "importPath": "backend.app.api.kiosk",
+        "description": "backend.app.api.kiosk",
+        "peekOfCode": "def search_students(search_data: StudentSearch, db: Session = Depends(get_db)):\n    \"\"\"Search for students by number, nickname, first name, or last name\"\"\"\n    student_service = StudentService(db)\n    students = student_service.search_students(search_data.query)\n    # Convert to search results\n    results = []\n    for student in students:\n        results.append(StudentSearchResult(\n            id=student.id,\n            student_number=student.student_number,",
+        "detail": "backend.app.api.kiosk",
+        "documentation": {}
+    },
+    {
+        "label": "check_in_student",
+        "kind": 2,
+        "importPath": "backend.app.api.kiosk",
+        "description": "backend.app.api.kiosk",
+        "peekOfCode": "def check_in_student(action: AttendanceAction, db: Session = Depends(get_db)):\n    \"\"\"Student check-in action\"\"\"\n    if action.action != \"check_in\":\n        raise HTTPException(status_code=400, detail=\"Invalid action for check-in endpoint\")\n    student_service = StudentService(db)\n    attendance_service = AttendanceService(db)\n    # Verify student exists\n    student = student_service.get_student(action.student_id)\n    if not student:\n        raise HTTPException(status_code=404, detail=\"Student not found\")",
+        "detail": "backend.app.api.kiosk",
+        "documentation": {}
+    },
+    {
+        "label": "check_out_student",
+        "kind": 2,
+        "importPath": "backend.app.api.kiosk",
+        "description": "backend.app.api.kiosk",
+        "peekOfCode": "def check_out_student(action: AttendanceAction, db: Session = Depends(get_db)):\n    \"\"\"Student check-out action\"\"\"\n    if action.action != \"check_out\":\n        raise HTTPException(status_code=400, detail=\"Invalid action for check-out endpoint\")\n    student_service = StudentService(db)\n    attendance_service = AttendanceService(db)\n    # Verify student exists\n    student = student_service.get_student(action.student_id)\n    if not student:\n        raise HTTPException(status_code=404, detail=\"Student not found\")",
+        "detail": "backend.app.api.kiosk",
+        "documentation": {}
+    },
+    {
+        "label": "get_student_status",
+        "kind": 2,
+        "importPath": "backend.app.api.kiosk",
+        "description": "backend.app.api.kiosk",
+        "peekOfCode": "def get_student_status(student_id: int, db: Session = Depends(get_db)):\n    \"\"\"Get current day attendance status for a student\"\"\"\n    student_service = StudentService(db)\n    attendance_service = AttendanceService(db)\n    # Verify student exists\n    student = student_service.get_student(student_id)\n    if not student:\n        raise HTTPException(status_code=404, detail=\"Student not found\")\n    today = date.today()\n    # Get attendance record",
+        "detail": "backend.app.api.kiosk",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.kiosk",
+        "description": "backend.app.api.kiosk",
+        "peekOfCode": "router = APIRouter(prefix=\"/kiosk\", tags=[\"kiosk\"])\n@router.post(\"/search\", response_model=List[StudentSearchResult])\ndef search_students(search_data: StudentSearch, db: Session = Depends(get_db)):\n    \"\"\"Search for students by number, nickname, first name, or last name\"\"\"\n    student_service = StudentService(db)\n    students = student_service.search_students(search_data.query)\n    # Convert to search results\n    results = []\n    for student in students:\n        results.append(StudentSearchResult(",
+        "detail": "backend.app.api.kiosk",
+        "documentation": {}
+    },
+    {
+        "label": "get_daily_attendance",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def get_daily_attendance(date_str: str, db: Session = Depends(get_db)):\n    \"\"\"Get daily attendance for a specific date\"\"\"\n    try:\n        target_date = datetime.strptime(date_str, \"%Y-%m-%d\").date()\n    except ValueError:\n        raise HTTPException(status_code=400, detail=\"Invalid date format. Use YYYY-MM-DD\")\n    attendance_service = AttendanceService(db)\n    attendance_records = attendance_service.get_daily_attendance(target_date)\n    # Format response\n    result = []",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_daily_summary",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def get_daily_summary(date_str: str, db: Session = Depends(get_db)):\n    \"\"\"Get daily attendance summary statistics\"\"\"\n    try:\n        target_date = datetime.strptime(date_str, \"%Y-%m-%d\").date()\n    except ValueError:\n        raise HTTPException(status_code=400, detail=\"Invalid date format. Use YYYY-MM-DD\")\n    attendance_service = AttendanceService(db)\n    summary = attendance_service.get_daily_summary(target_date)\n    return DailyAttendanceSummary(**summary)\n@router.put(\"/attendance/{attendance_id}\", response_model=dict)",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "update_attendance",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def update_attendance(\n    attendance_id: int, \n    update_data: AttendanceUpdate, \n    db: Session = Depends(get_db)\n):\n    \"\"\"Update attendance record (manager override)\"\"\"\n    attendance_service = AttendanceService(db)\n    updated = attendance_service.update_attendance(attendance_id, update_data, \"manager\")\n    if not updated:\n        raise HTTPException(status_code=404, detail=\"Attendance record not found\")",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_students",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def get_students(active_only: bool = True, db: Session = Depends(get_db)):\n    \"\"\"Get all students\"\"\"\n    student_service = StudentService(db)\n    students = student_service.get_all_students(active_only)\n    result = []\n    for student in students:\n        result.append({\n            \"id\": student.id,\n            \"student_number\": student.student_number,\n            \"nickname\": student.nickname,",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "search_students",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def search_students(query: str, db: Session = Depends(get_db)):\n    \"\"\"Search students\"\"\"\n    student_service = StudentService(db)\n    students = student_service.search_students(query)\n    result = []\n    for student in students:\n        result.append({\n            \"id\": student.id,\n            \"student_number\": student.student_number,\n            \"nickname\": student.nickname,",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_monthly_statistics",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def get_monthly_statistics(year_month: str, db: Session = Depends(get_db)):\n    \"\"\"Get monthly statistics for all students\"\"\"\n    try:\n        # Validate format YYYY-MM\n        datetime.strptime(year_month, \"%Y-%m\")\n    except ValueError:\n        raise HTTPException(status_code=400, detail=\"Invalid year-month format. Use YYYY-MM\")\n    claims_service = ClaimsService(db)\n    statistics = claims_service.calculate_monthly_statistics(year_month)\n    return [MonthlyStatistics(**stat) for stat in statistics]",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_claims",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def get_claims(status: Optional[str] = None, db: Session = Depends(get_db)):\n    \"\"\"Get claims with optional status filter\"\"\"\n    claims_service = ClaimsService(db)\n    if status == \"open\":\n        claims = claims_service.get_open_claims()\n    elif status == \"closed\":\n        claims = claims_service.get_open_claims()  # This should be get_closed_claims\n    else:\n        # Get all claims\n        claims = claims_service.get_open_claims()  # This should be get_all_claims",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_claims_summary",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def get_claims_summary(db: Session = Depends(get_db)):\n    \"\"\"Get claims summary statistics\"\"\"\n    claims_service = ClaimsService(db)\n    return claims_service.get_claims_summary()\n@router.put(\"/claims/{claim_id}/close\", response_model=MessageResponse)\ndef close_claim(claim_id: int, db: Session = Depends(get_db)):\n    \"\"\"Close a claim\"\"\"\n    claims_service = ClaimsService(db)\n    updated = claims_service.close_claim(claim_id)\n    if not updated:",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "close_claim",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def close_claim(claim_id: int, db: Session = Depends(get_db)):\n    \"\"\"Close a claim\"\"\"\n    claims_service = ClaimsService(db)\n    updated = claims_service.close_claim(claim_id)\n    if not updated:\n        raise HTTPException(status_code=404, detail=\"Claim not found\")\n    return MessageResponse(message=\"Claim closed successfully\")\n@router.get(\"/dashboard/today\")\ndef get_today_dashboard(db: Session = Depends(get_db)):\n    \"\"\"Get today's dashboard data\"\"\"",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "get_today_dashboard",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def get_today_dashboard(db: Session = Depends(get_db)):\n    \"\"\"Get today's dashboard data\"\"\"\n    today = date.today()\n    attendance_service = AttendanceService(db)\n    student_service = StudentService(db)\n    claims_service = ClaimsService(db)\n    # Get daily summary\n    daily_summary = attendance_service.get_daily_summary(today)\n    # Get student counts\n    student_counts = student_service.count_students_by_school_level()",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "process_automation",
+        "kind": 2,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "def process_automation(db: Session = Depends(get_db)):\n    \"\"\"Manually trigger automation processes for today\"\"\"\n    today = date.today()\n    attendance_service = AttendanceService(db)\n    results = {\n        \"permanent_absences\": [],\n        \"late_attendance\": [],\n        \"yom_lo_ba_li\": [],\n        \"end_of_day\": []\n    }",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "router",
+        "kind": 5,
+        "importPath": "backend.app.api.manager",
+        "description": "backend.app.api.manager",
+        "peekOfCode": "router = APIRouter(prefix=\"/manager\", tags=[\"manager\"])\n@router.get(\"/attendance/daily/{date_str}\", response_model=List[dict])\ndef get_daily_attendance(date_str: str, db: Session = Depends(get_db)):\n    \"\"\"Get daily attendance for a specific date\"\"\"\n    try:\n        target_date = datetime.strptime(date_str, \"%Y-%m-%d\").date()\n    except ValueError:\n        raise HTTPException(status_code=400, detail=\"Invalid date format. Use YYYY-MM-DD\")\n    attendance_service = AttendanceService(db)\n    attendance_records = attendance_service.get_daily_attendance(target_date)",
+        "detail": "backend.app.api.manager",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceService",
+        "kind": 6,
+        "importPath": "backend.app.services.attendance_service",
+        "description": "backend.app.services.attendance_service",
+        "peekOfCode": "class AttendanceService:\n    def __init__(self, db: Session):\n        self.db = db\n        self.audit_service = AuditService(db)\n    def create_attendance(self, attendance_data: AttendanceCreate) -> Attendance:\n        \"\"\"Create a new attendance record\"\"\"\n        attendance = Attendance(**attendance_data.dict())\n        self.db.add(attendance)\n        self.db.commit()\n        self.db.refresh(attendance)",
+        "detail": "backend.app.services.attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "AuditService",
+        "kind": 6,
+        "importPath": "backend.app.services.audit_service",
+        "description": "backend.app.services.audit_service",
+        "peekOfCode": "class AuditService:\n    def __init__(self, db: Session):\n        self.db = db\n    def log_action(self, actor: str, action: str, entity: str, entity_id: int, \n                   before: str = None, after: str = None):\n        \"\"\"Log an action in the audit log\"\"\"\n        audit_entry = AuditLog(\n            actor=actor,\n            action=action,\n            entity=entity,",
+        "detail": "backend.app.services.audit_service",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimsService",
+        "kind": 6,
+        "importPath": "backend.app.services.claims_service",
+        "description": "backend.app.services.claims_service",
+        "peekOfCode": "class ClaimsService:\n    def __init__(self, db: Session):\n        self.db = db\n        self.audit_service = AuditService(db)\n    def create_claim(self, claim_data: ClaimCreate) -> Claim:\n        \"\"\"Create a new claim\"\"\"\n        claim = Claim(**claim_data.dict())\n        self.db.add(claim)\n        self.db.commit()\n        self.db.refresh(claim)",
+        "detail": "backend.app.services.claims_service",
+        "documentation": {}
+    },
+    {
+        "label": "StudentService",
+        "kind": 6,
+        "importPath": "backend.app.services.student_service",
+        "description": "backend.app.services.student_service",
+        "peekOfCode": "class StudentService:\n    def __init__(self, db: Session):\n        self.db = db\n        self.audit_service = AuditService(db)\n    def create_student(self, student_data: StudentCreate) -> Student:\n        \"\"\"Create a new student\"\"\"\n        student = Student(**student_data.dict())\n        self.db.add(student)\n        self.db.commit()\n        self.db.refresh(student)",
+        "detail": "backend.app.services.student_service",
+        "documentation": {}
+    },
+    {
+        "label": "WhatsAppService",
+        "kind": 6,
+        "importPath": "backend.app.services.whatsapp_service",
+        "description": "backend.app.services.whatsapp_service",
+        "peekOfCode": "class WhatsAppService:\n    def __init__(self, db: Session):\n        self.db = db\n        self.audit_service = AuditService(db)\n        # In production, this would be configured with Twilio or similar service\n        self.enabled = os.getenv(\"WHATSAPP_ENABLED\", \"false\").lower() == \"true\"\n        self.account_sid = os.getenv(\"TWILIO_ACCOUNT_SID\")\n        self.auth_token = os.getenv(\"TWILIO_AUTH_TOKEN\")\n        self.from_number = os.getenv(\"TWILIO_FROM_NUMBER\")\n    def send_reminder(self, student: Student, date) -> bool:",
+        "detail": "backend.app.services.whatsapp_service",
+        "documentation": {}
+    },
+    {
+        "label": "get_db",
+        "kind": 2,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "def get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "DATABASE_URL",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "DATABASE_URL = os.getenv(\"DATABASE_URL\", \"postgresql://postgres:password@postgres:5432/attendance\")\n# Create engine\nengine = create_engine(\n    DATABASE_URL,\n    poolclass=StaticPool,\n    connect_args={\"check_same_thread\": False} if \"sqlite\" in DATABASE_URL else {}\n)\n# Create session factory\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Create base class for models",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "engine = create_engine(\n    DATABASE_URL,\n    poolclass=StaticPool,\n    connect_args={\"check_same_thread\": False} if \"sqlite\" in DATABASE_URL else {}\n)\n# Create session factory\nSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Create base class for models\nBase = declarative_base()\n# Dependency to get database session",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "SessionLocal",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n# Create base class for models\nBase = declarative_base()\n# Dependency to get database session\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "Base",
+        "kind": 5,
+        "importPath": "backend.app.database",
+        "description": "backend.app.database",
+        "peekOfCode": "Base = declarative_base()\n# Dependency to get database session\ndef get_db():\n    db = SessionLocal()\n    try:\n        yield db\n    finally:\n        db.close()",
+        "detail": "backend.app.database",
+        "documentation": {}
+    },
+    {
+        "label": "app",
+        "kind": 5,
+        "importPath": "backend.app.main",
+        "description": "backend.app.main",
+        "peekOfCode": "app = FastAPI(\n    title=\"School Attendance System\",\n    description=\"A comprehensive school attendance management system\",\n    version=\"1.0.0\",\n    lifespan=lifespan\n)\n# Add CORS middleware\napp.add_middleware(\n    CORSMiddleware,\n    allow_origins=[\"*\"],  # In production, restrict to specific domains",
+        "detail": "backend.app.main",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolLevel",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class SchoolLevel(str, enum.Enum):\n    ELEMENTARY = \"יסודי\"\n    HIGH_SCHOOL = \"תיכון\"\nclass ActivityStatus(str, enum.Enum):\n    ACTIVE = \"פעיל\"\n    INACTIVE = \"לא פעיל\"\n    SUSPENDED = \"מושעה\"\nclass AttendanceStatus(str, enum.Enum):\n    NOT_REPORTED = \"לא דיווח\"\n    PRESENT = \"נוכח\"",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ActivityStatus",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class ActivityStatus(str, enum.Enum):\n    ACTIVE = \"פעיל\"\n    INACTIVE = \"לא פעיל\"\n    SUSPENDED = \"מושעה\"\nclass AttendanceStatus(str, enum.Enum):\n    NOT_REPORTED = \"לא דיווח\"\n    PRESENT = \"נוכח\"\n    LEFT = \"יצא\"\n    YOM_LO_BA_LI = \"יום לא בא לי\"\n    APPROVED_ABSENCE = \"חיסור מאושר\"",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceStatus",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class AttendanceStatus(str, enum.Enum):\n    NOT_REPORTED = \"לא דיווח\"\n    PRESENT = \"נוכח\"\n    LEFT = \"יצא\"\n    YOM_LO_BA_LI = \"יום לא בא לי\"\n    APPROVED_ABSENCE = \"חיסור מאושר\"\n    PERMANENT_ABSENCE_APPROVED = \"אישור היעדרות קבוע\"\nclass SubStatus(str, enum.Enum):\n    NONE = \"ללא\"\n    LATE = \"איחור\"",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SubStatus",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class SubStatus(str, enum.Enum):\n    NONE = \"ללא\"\n    LATE = \"איחור\"\n    AUTO_CLOSED = \"נסגר אוטומטית\"\nclass ReportedBy(str, enum.Enum):\n    STUDENT = \"student\"\n    MANAGER = \"manager\"\n    AUTO = \"auto\"\nclass ClosedReason(str, enum.Enum):\n    NA = \"n/a\"",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ReportedBy",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class ReportedBy(str, enum.Enum):\n    STUDENT = \"student\"\n    MANAGER = \"manager\"\n    AUTO = \"auto\"\nclass ClosedReason(str, enum.Enum):\n    NA = \"n/a\"\n    MANUAL = \"manual\"\n    AUTO_16 = \"auto_16\"\nclass Weekday(str, enum.Enum):\n    SUNDAY = \"א\"",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ClosedReason",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class ClosedReason(str, enum.Enum):\n    NA = \"n/a\"\n    MANUAL = \"manual\"\n    AUTO_16 = \"auto_16\"\nclass Weekday(str, enum.Enum):\n    SUNDAY = \"א\"\n    MONDAY = \"ב\"\n    TUESDAY = \"ג\"\n    WEDNESDAY = \"ד\"\n    THURSDAY = \"ה\"",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Weekday",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class Weekday(str, enum.Enum):\n    SUNDAY = \"א\"\n    MONDAY = \"ב\"\n    TUESDAY = \"ג\"\n    WEDNESDAY = \"ד\"\n    THURSDAY = \"ה\"\nclass ClaimReason(str, enum.Enum):\n    LATE_THRESHOLD = \"late_threshold\"\n    THIRD_YOM_LO_BA_LI = \"third_yom_lo_ba_li\"\n    OTHER = \"other\"",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimReason",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class ClaimReason(str, enum.Enum):\n    LATE_THRESHOLD = \"late_threshold\"\n    THIRD_YOM_LO_BA_LI = \"third_yom_lo_ba_li\"\n    OTHER = \"other\"\nclass ClaimStatus(str, enum.Enum):\n    OPEN = \"open\"\n    CLOSED = \"closed\"\nclass Student(Base):\n    __tablename__ = \"students\"\n    id = Column(Integer, primary_key=True, index=True)",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimStatus",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class ClaimStatus(str, enum.Enum):\n    OPEN = \"open\"\n    CLOSED = \"closed\"\nclass Student(Base):\n    __tablename__ = \"students\"\n    id = Column(Integer, primary_key=True, index=True)\n    student_number = Column(String, unique=True, nullable=False, index=True)\n    nickname = Column(String, unique=True, nullable=False, index=True)\n    first_name = Column(String, nullable=False)\n    last_name = Column(String, nullable=False)",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class Student(Base):\n    __tablename__ = \"students\"\n    id = Column(Integer, primary_key=True, index=True)\n    student_number = Column(String, unique=True, nullable=False, index=True)\n    nickname = Column(String, unique=True, nullable=False, index=True)\n    first_name = Column(String, nullable=False)\n    last_name = Column(String, nullable=False)\n    phone_number = Column(String)\n    school_level = Column(String, nullable=False)\n    activity_status = Column(String, nullable=False, default=ActivityStatus.ACTIVE)",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Attendance",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class Attendance(Base):\n    __tablename__ = \"attendance\"\n    id = Column(Integer, primary_key=True, index=True)\n    student_id = Column(Integer, ForeignKey(\"students.id\"), nullable=False)\n    date = Column(Date, nullable=False)\n    status = Column(String, nullable=False, default=AttendanceStatus.NOT_REPORTED)\n    sub_status = Column(String, default=SubStatus.NONE)\n    reported_by = Column(String, default=ReportedBy.STUDENT)\n    check_in_time = Column(DateTime)\n    check_out_time = Column(DateTime)",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsence",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class PermanentAbsence(Base):\n    __tablename__ = \"permanent_absences\"\n    id = Column(Integer, primary_key=True, index=True)\n    student_id = Column(Integer, ForeignKey(\"students.id\"), nullable=False)\n    weekday = Column(String, nullable=False)\n    reason = Column(Text)\n    # Relationships\n    student = relationship(\"Student\", back_populates=\"permanent_absences\")\n    # Constraints\n    __table_args__ = (",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHoliday",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class SchoolHoliday(Base):\n    __tablename__ = \"school_holidays\"\n    id = Column(Integer, primary_key=True, index=True)\n    date = Column(Date, nullable=False, unique=True)\n    description = Column(Text)\nclass Settings(Base):\n    __tablename__ = \"settings\"\n    id = Column(Integer, primary_key=True, default=1)\n    lateness_threshold_per_month_default = Column(Integer, default=3)\n    max_yom_lo_ba_li_per_month_default = Column(Integer, default=2)",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class Settings(Base):\n    __tablename__ = \"settings\"\n    id = Column(Integer, primary_key=True, default=1)\n    lateness_threshold_per_month_default = Column(Integer, default=3)\n    max_yom_lo_ba_li_per_month_default = Column(Integer, default=2)\n    court_chair_name = Column(String)\n    court_chair_phone = Column(String)\nclass StudentMonthlyOverride(Base):\n    __tablename__ = \"student_monthly_overrides\"\n    id = Column(Integer, primary_key=True, index=True)",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "StudentMonthlyOverride",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class StudentMonthlyOverride(Base):\n    __tablename__ = \"student_monthly_overrides\"\n    id = Column(Integer, primary_key=True, index=True)\n    student_id = Column(Integer, ForeignKey(\"students.id\"), nullable=False)\n    year_month = Column(String, nullable=False)  # Format: YYYY-MM\n    lateness_threshold_override = Column(Integer)\n    max_yom_lo_ba_li_override = Column(Integer)\n    # Relationships\n    student = relationship(\"Student\", back_populates=\"monthly_overrides\")\n    # Constraints",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "Claim",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class Claim(Base):\n    __tablename__ = \"claims\"\n    id = Column(Integer, primary_key=True, index=True)\n    student_id = Column(Integer, ForeignKey(\"students.id\"), nullable=False)\n    date_opened = Column(Date, nullable=False, default=func.current_date())\n    reason = Column(String, nullable=False)\n    notified_to = Column(Text)  # JSON array as text\n    status = Column(String, default=ClaimStatus.OPEN)\n    # Relationships\n    student = relationship(\"Student\", back_populates=\"claims\")",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "AuditLog",
+        "kind": 6,
+        "importPath": "backend.app.models",
+        "description": "backend.app.models",
+        "peekOfCode": "class AuditLog(Base):\n    __tablename__ = \"audit_log\"\n    id = Column(Integer, primary_key=True, index=True)\n    actor = Column(String, nullable=False)  # manager/auto/student\n    action = Column(String, nullable=False)\n    entity = Column(String, nullable=False)\n    entity_id = Column(Integer, nullable=False)\n    before = Column(Text)  # JSON representation\n    after = Column(Text)   # JSON representation\n    timestamp = Column(DateTime, default=func.now())",
+        "detail": "backend.app.models",
+        "documentation": {}
+    },
+    {
+        "label": "StudentBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentBase(BaseModel):\n    student_number: str\n    nickname: str\n    first_name: str\n    last_name: str\n    phone_number: Optional[str] = None\n    school_level: SchoolLevel\n    activity_status: ActivityStatus = ActivityStatus.ACTIVE\nclass StudentCreate(StudentBase):\n    pass",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentCreate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentCreate(StudentBase):\n    pass\nclass StudentUpdate(BaseModel):\n    nickname: Optional[str] = None\n    first_name: Optional[str] = None\n    last_name: Optional[str] = None\n    phone_number: Optional[str] = None\n    school_level: Optional[SchoolLevel] = None\n    activity_status: Optional[ActivityStatus] = None\nclass Student(StudentBase):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentUpdate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentUpdate(BaseModel):\n    nickname: Optional[str] = None\n    first_name: Optional[str] = None\n    last_name: Optional[str] = None\n    phone_number: Optional[str] = None\n    school_level: Optional[SchoolLevel] = None\n    activity_status: Optional[ActivityStatus] = None\nclass Student(StudentBase):\n    id: int\n    class Config:",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Student",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class Student(StudentBase):\n    id: int\n    class Config:\n        from_attributes = True\nclass AttendanceBase(BaseModel):\n    student_id: int\n    date: date\n    status: AttendanceStatus = AttendanceStatus.NOT_REPORTED\n    sub_status: SubStatus = SubStatus.NONE\n    reported_by: ReportedBy = ReportedBy.STUDENT",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class AttendanceBase(BaseModel):\n    student_id: int\n    date: date\n    status: AttendanceStatus = AttendanceStatus.NOT_REPORTED\n    sub_status: SubStatus = SubStatus.NONE\n    reported_by: ReportedBy = ReportedBy.STUDENT\n    check_in_time: Optional[datetime] = None\n    check_out_time: Optional[datetime] = None\n    closed_reason: ClosedReason = ClosedReason.NA\n    override_locked: bool = False",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceCreate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class AttendanceCreate(AttendanceBase):\n    pass\nclass AttendanceUpdate(BaseModel):\n    status: Optional[AttendanceStatus] = None\n    sub_status: Optional[SubStatus] = None\n    reported_by: Optional[ReportedBy] = None\n    check_in_time: Optional[datetime] = None\n    check_out_time: Optional[datetime] = None\n    closed_reason: Optional[ClosedReason] = None\n    override_locked: Optional[bool] = None",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceUpdate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class AttendanceUpdate(BaseModel):\n    status: Optional[AttendanceStatus] = None\n    sub_status: Optional[SubStatus] = None\n    reported_by: Optional[ReportedBy] = None\n    check_in_time: Optional[datetime] = None\n    check_out_time: Optional[datetime] = None\n    closed_reason: Optional[ClosedReason] = None\n    override_locked: Optional[bool] = None\n    override_locked_at: Optional[datetime] = None\nclass Attendance(AttendanceBase):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Attendance",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class Attendance(AttendanceBase):\n    id: int\n    student: Student\n    class Config:\n        from_attributes = True\nclass PermanentAbsenceBase(BaseModel):\n    student_id: int\n    weekday: Weekday\n    reason: Optional[str] = None\nclass PermanentAbsenceCreate(PermanentAbsenceBase):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsenceBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class PermanentAbsenceBase(BaseModel):\n    student_id: int\n    weekday: Weekday\n    reason: Optional[str] = None\nclass PermanentAbsenceCreate(PermanentAbsenceBase):\n    pass\nclass PermanentAbsenceUpdate(BaseModel):\n    weekday: Optional[Weekday] = None\n    reason: Optional[str] = None\nclass PermanentAbsence(PermanentAbsenceBase):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsenceCreate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class PermanentAbsenceCreate(PermanentAbsenceBase):\n    pass\nclass PermanentAbsenceUpdate(BaseModel):\n    weekday: Optional[Weekday] = None\n    reason: Optional[str] = None\nclass PermanentAbsence(PermanentAbsenceBase):\n    id: int\n    student: Student\n    class Config:\n        from_attributes = True",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsenceUpdate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class PermanentAbsenceUpdate(BaseModel):\n    weekday: Optional[Weekday] = None\n    reason: Optional[str] = None\nclass PermanentAbsence(PermanentAbsenceBase):\n    id: int\n    student: Student\n    class Config:\n        from_attributes = True\nclass SchoolHolidayBase(BaseModel):\n    date: date",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "PermanentAbsence",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class PermanentAbsence(PermanentAbsenceBase):\n    id: int\n    student: Student\n    class Config:\n        from_attributes = True\nclass SchoolHolidayBase(BaseModel):\n    date: date\n    description: str\nclass SchoolHolidayCreate(SchoolHolidayBase):\n    pass",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHolidayBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class SchoolHolidayBase(BaseModel):\n    date: date\n    description: str\nclass SchoolHolidayCreate(SchoolHolidayBase):\n    pass\nclass SchoolHolidayUpdate(BaseModel):\n    date: Optional[date] = None\n    description: Optional[str] = None\nclass SchoolHoliday(SchoolHolidayBase):\n    id: int",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHolidayCreate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class SchoolHolidayCreate(SchoolHolidayBase):\n    pass\nclass SchoolHolidayUpdate(BaseModel):\n    date: Optional[date] = None\n    description: Optional[str] = None\nclass SchoolHoliday(SchoolHolidayBase):\n    id: int\n    class Config:\n        from_attributes = True\nclass SettingsBase(BaseModel):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHolidayUpdate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class SchoolHolidayUpdate(BaseModel):\n    date: Optional[date] = None\n    description: Optional[str] = None\nclass SchoolHoliday(SchoolHolidayBase):\n    id: int\n    class Config:\n        from_attributes = True\nclass SettingsBase(BaseModel):\n    lateness_threshold_per_month_default: int = 3\n    max_yom_lo_ba_li_per_month_default: int = 2",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SchoolHoliday",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class SchoolHoliday(SchoolHolidayBase):\n    id: int\n    class Config:\n        from_attributes = True\nclass SettingsBase(BaseModel):\n    lateness_threshold_per_month_default: int = 3\n    max_yom_lo_ba_li_per_month_default: int = 2\n    court_chair_name: Optional[str] = None\n    court_chair_phone: Optional[str] = None\nclass SettingsUpdate(BaseModel):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SettingsBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class SettingsBase(BaseModel):\n    lateness_threshold_per_month_default: int = 3\n    max_yom_lo_ba_li_per_month_default: int = 2\n    court_chair_name: Optional[str] = None\n    court_chair_phone: Optional[str] = None\nclass SettingsUpdate(BaseModel):\n    lateness_threshold_per_month_default: Optional[int] = None\n    max_yom_lo_ba_li_per_month_default: Optional[int] = None\n    court_chair_name: Optional[str] = None\n    court_chair_phone: Optional[str] = None",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "SettingsUpdate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class SettingsUpdate(BaseModel):\n    lateness_threshold_per_month_default: Optional[int] = None\n    max_yom_lo_ba_li_per_month_default: Optional[int] = None\n    court_chair_name: Optional[str] = None\n    court_chair_phone: Optional[str] = None\nclass Settings(SettingsBase):\n    id: int\n    class Config:\n        from_attributes = True\nclass StudentMonthlyOverrideBase(BaseModel):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Settings",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class Settings(SettingsBase):\n    id: int\n    class Config:\n        from_attributes = True\nclass StudentMonthlyOverrideBase(BaseModel):\n    student_id: int\n    year_month: str  # Format: YYYY-MM\n    lateness_threshold_override: Optional[int] = None\n    max_yom_lo_ba_li_override: Optional[int] = None\nclass StudentMonthlyOverrideCreate(StudentMonthlyOverrideBase):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentMonthlyOverrideBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentMonthlyOverrideBase(BaseModel):\n    student_id: int\n    year_month: str  # Format: YYYY-MM\n    lateness_threshold_override: Optional[int] = None\n    max_yom_lo_ba_li_override: Optional[int] = None\nclass StudentMonthlyOverrideCreate(StudentMonthlyOverrideBase):\n    pass\nclass StudentMonthlyOverrideUpdate(BaseModel):\n    lateness_threshold_override: Optional[int] = None\n    max_yom_lo_ba_li_override: Optional[int] = None",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentMonthlyOverrideCreate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentMonthlyOverrideCreate(StudentMonthlyOverrideBase):\n    pass\nclass StudentMonthlyOverrideUpdate(BaseModel):\n    lateness_threshold_override: Optional[int] = None\n    max_yom_lo_ba_li_override: Optional[int] = None\nclass StudentMonthlyOverride(StudentMonthlyOverrideBase):\n    id: int\n    student: Student\n    class Config:\n        from_attributes = True",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentMonthlyOverrideUpdate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentMonthlyOverrideUpdate(BaseModel):\n    lateness_threshold_override: Optional[int] = None\n    max_yom_lo_ba_li_override: Optional[int] = None\nclass StudentMonthlyOverride(StudentMonthlyOverrideBase):\n    id: int\n    student: Student\n    class Config:\n        from_attributes = True\nclass ClaimBase(BaseModel):\n    student_id: int",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentMonthlyOverride",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentMonthlyOverride(StudentMonthlyOverrideBase):\n    id: int\n    student: Student\n    class Config:\n        from_attributes = True\nclass ClaimBase(BaseModel):\n    student_id: int\n    reason: ClaimReason\n    notified_to: List[str] = []\n    status: ClaimStatus = ClaimStatus.OPEN",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class ClaimBase(BaseModel):\n    student_id: int\n    reason: ClaimReason\n    notified_to: List[str] = []\n    status: ClaimStatus = ClaimStatus.OPEN\nclass ClaimCreate(ClaimBase):\n    pass\nclass ClaimUpdate(BaseModel):\n    reason: Optional[ClaimReason] = None\n    notified_to: Optional[List[str]] = None",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimCreate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class ClaimCreate(ClaimBase):\n    pass\nclass ClaimUpdate(BaseModel):\n    reason: Optional[ClaimReason] = None\n    notified_to: Optional[List[str]] = None\n    status: Optional[ClaimStatus] = None\nclass Claim(ClaimBase):\n    id: int\n    date_opened: date\n    student: Student",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ClaimUpdate",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class ClaimUpdate(BaseModel):\n    reason: Optional[ClaimReason] = None\n    notified_to: Optional[List[str]] = None\n    status: Optional[ClaimStatus] = None\nclass Claim(ClaimBase):\n    id: int\n    date_opened: date\n    student: Student\n    class Config:\n        from_attributes = True",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "Claim",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class Claim(ClaimBase):\n    id: int\n    date_opened: date\n    student: Student\n    class Config:\n        from_attributes = True\nclass AuditLogBase(BaseModel):\n    actor: str\n    action: str\n    entity: str",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AuditLogBase",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class AuditLogBase(BaseModel):\n    actor: str\n    action: str\n    entity: str\n    entity_id: int\n    before: Optional[str] = None\n    after: Optional[str] = None\nclass AuditLog(AuditLogBase):\n    id: int\n    timestamp: datetime",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AuditLog",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class AuditLog(AuditLogBase):\n    id: int\n    timestamp: datetime\n    class Config:\n        from_attributes = True\n# Special schemas for kiosk\nclass StudentSearch(BaseModel):\n    query: str = Field(..., min_length=1, description=\"Search by student number, nickname, first name, or last name\")\nclass StudentSearchResult(BaseModel):\n    id: int",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentSearch",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentSearch(BaseModel):\n    query: str = Field(..., min_length=1, description=\"Search by student number, nickname, first name, or last name\")\nclass StudentSearchResult(BaseModel):\n    id: int\n    student_number: str\n    nickname: str\n    first_name: str\n    last_name: str\n    school_level: SchoolLevel\nclass AttendanceAction(BaseModel):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "StudentSearchResult",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class StudentSearchResult(BaseModel):\n    id: int\n    student_number: str\n    nickname: str\n    first_name: str\n    last_name: str\n    school_level: SchoolLevel\nclass AttendanceAction(BaseModel):\n    action: str = Field(..., pattern=\"^(check_in|check_out)$\")\n    student_id: int",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "AttendanceAction",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class AttendanceAction(BaseModel):\n    action: str = Field(..., pattern=\"^(check_in|check_out)$\")\n    student_id: int\n# Dashboard schemas\nclass DailyAttendanceSummary(BaseModel):\n    date: date\n    total_students: int\n    present: int\n    absent: int\n    late: int",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "DailyAttendanceSummary",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class DailyAttendanceSummary(BaseModel):\n    date: date\n    total_students: int\n    present: int\n    absent: int\n    late: int\n    left: int\n    yom_lo_ba_li: int\n    not_reported: int\nclass MonthlyStatistics(BaseModel):",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "MonthlyStatistics",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class MonthlyStatistics(BaseModel):\n    year_month: str\n    student_id: int\n    student_name: str\n    late_count: int\n    yom_lo_ba_li_count: int\n    threshold_late: int\n    threshold_yom_lo_ba_li: int\n    over_threshold: bool\n# Response schemas",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "MessageResponse",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class MessageResponse(BaseModel):\n    message: str\nclass ErrorResponse(BaseModel):\n    error: str\n    detail: Optional[str] = None",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "ErrorResponse",
+        "kind": 6,
+        "importPath": "backend.app.schemas",
+        "description": "backend.app.schemas",
+        "peekOfCode": "class ErrorResponse(BaseModel):\n    error: str\n    detail: Optional[str] = None",
+        "detail": "backend.app.schemas",
+        "documentation": {}
+    },
+    {
+        "label": "engine",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def engine():\n    \"\"\"Create a test database engine\"\"\"\n    engine = create_engine(\n        \"sqlite:///:memory:\",\n        poolclass=StaticPool,\n        connect_args={\"check_same_thread\": False}\n    )\n    Base.metadata.create_all(bind=engine)\n    return engine\n@pytest.fixture(scope=\"function\")",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "db_session",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def db_session(engine):\n    \"\"\"Create a new database session for each test\"\"\"\n    TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)\n    session = TestingSessionLocal()\n    yield session\n    session.close()\n@pytest.fixture\ndef sample_student():\n    \"\"\"Create a sample student for testing\"\"\"\n    return Student(",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_student",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_student():\n    \"\"\"Create a sample student for testing\"\"\"\n    return Student(\n        id=1,\n        student_number=\"12345\",\n        nickname=\"test_user\",\n        first_name=\"Test\",\n        last_name=\"Student\",\n        phone_number=\"+972501234567\",\n        school_level=\"יסודי\",",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_students",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_students():\n    \"\"\"Create multiple sample students for testing\"\"\"\n    return [\n        Student(\n            id=1,\n            student_number=\"12345\",\n            nickname=\"user1\",\n            first_name=\"Test\",\n            last_name=\"Student1\",\n            phone_number=\"+972501234567\",",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_attendance",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_attendance():\n    \"\"\"Create a sample attendance record for testing\"\"\"\n    from datetime import date\n    from app.models import AttendanceStatus, SubStatus, ReportedBy\n    return Attendance(\n        id=1,\n        student_id=1,\n        date=date.today(),\n        status=AttendanceStatus.PRESENT,\n        sub_status=SubStatus.NONE,",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_attendance_records",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_attendance_records():\n    \"\"\"Create multiple sample attendance records for testing\"\"\"\n    from datetime import date\n    from app.models import AttendanceStatus, SubStatus, ReportedBy\n    return [\n        Attendance(\n            id=1,\n            student_id=1,\n            date=date.today(),\n            status=AttendanceStatus.PRESENT,",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_permanent_absence",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_permanent_absence():\n    \"\"\"Create a sample permanent absence for testing\"\"\"\n    from app.models import Weekday\n    return PermanentAbsence(\n        id=1,\n        student_id=1,\n        weekday=Weekday.MONDAY,\n        reason=\"Religious studies\"\n    )\n@pytest.fixture",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_school_holiday",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_school_holiday():\n    \"\"\"Create a sample school holiday for testing\"\"\"\n    from datetime import date\n    return SchoolHoliday(\n        id=1,\n        date=date(2024, 1, 1),\n        description=\"New Year\"\n    )\n@pytest.fixture\ndef sample_settings():",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_settings",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_settings():\n    \"\"\"Create sample system settings for testing\"\"\"\n    return Settings(\n        id=1,\n        lateness_threshold_per_month_default=3,\n        max_yom_lo_ba_li_per_month_default=2,\n        court_chair_name=\"Judge Smith\",\n        court_chair_phone=\"+972501234570\"\n    )\n@pytest.fixture",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_monthly_override",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_monthly_override():\n    \"\"\"Create a sample monthly override for testing\"\"\"\n    return StudentMonthlyOverride(\n        id=1,\n        student_id=1,\n        year_month=\"2024-01\",\n        lateness_threshold_override=5,\n        max_yom_lo_ba_li_override=3\n    )\n@pytest.fixture",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_claim",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_claim():\n    \"\"\"Create a sample claim for testing\"\"\"\n    from datetime import date\n    from app.models import ClaimReason, ClaimStatus\n    return Claim(\n        id=1,\n        student_id=1,\n        date_opened=date.today(),\n        reason=ClaimReason.LATE_THRESHOLD,\n        notified_to=[\"manager\", \"student\", \"court_chair\"],",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "sample_audit_log",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def sample_audit_log():\n    \"\"\"Create a sample audit log entry for testing\"\"\"\n    from datetime import datetime\n    return AuditLog(\n        id=1,\n        actor=\"manager\",\n        action=\"update_student\",\n        entity=\"student\",\n        entity_id=1,\n        before='{\"status\": \"פעיל\"}',",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "populated_db",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def populated_db(db_session, sample_students, sample_attendance_records, \n                sample_permanent_absence, sample_school_holiday, \n                sample_settings, sample_monthly_override, sample_claim):\n    \"\"\"Create a database with sample data for integration tests\"\"\"\n    # Add students\n    for student in sample_students:\n        db_session.add(student)\n    # Add attendance records\n    for attendance in sample_attendance_records:\n        db_session.add(attendance)",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "mock_whatsapp_service",
+        "kind": 2,
+        "importPath": "backend.tests.conftest",
+        "description": "backend.tests.conftest",
+        "peekOfCode": "def mock_whatsapp_service():\n    \"\"\"Create a mock WhatsApp service for testing\"\"\"\n    mock_service = Mock()\n    mock_service.enabled = True\n    mock_service.send_reminder.return_value = True\n    mock_service.send_claim_notification.return_value = True\n    return mock_service",
+        "detail": "backend.tests.conftest",
+        "documentation": {}
+    },
+    {
+        "label": "TestAttendanceService",
+        "kind": 6,
+        "importPath": "backend.tests.test_attendance_service",
+        "description": "backend.tests.test_attendance_service",
+        "peekOfCode": "class TestAttendanceService:\n    def test_create_attendance(self, attendance_service, mock_db, mock_audit_service):\n        \"\"\"Test creating a new attendance record\"\"\"\n        # Arrange\n        attendance_data = AttendanceCreate(\n            student_id=1,\n            date=date.today(),\n            status=AttendanceStatus.PRESENT,\n            sub_status=SubStatus.NONE,\n            reported_by=ReportedBy.STUDENT",
+        "detail": "backend.tests.test_attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "mock_db",
+        "kind": 2,
+        "importPath": "backend.tests.test_attendance_service",
+        "description": "backend.tests.test_attendance_service",
+        "peekOfCode": "def mock_db():\n    return Mock(spec=Session)\n@pytest.fixture\ndef mock_audit_service():\n    return Mock()\n@pytest.fixture\ndef attendance_service(mock_db, mock_audit_service):\n    service = AttendanceService(mock_db)\n    service.audit_service = mock_audit_service\n    return service",
+        "detail": "backend.tests.test_attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "mock_audit_service",
+        "kind": 2,
+        "importPath": "backend.tests.test_attendance_service",
+        "description": "backend.tests.test_attendance_service",
+        "peekOfCode": "def mock_audit_service():\n    return Mock()\n@pytest.fixture\ndef attendance_service(mock_db, mock_audit_service):\n    service = AttendanceService(mock_db)\n    service.audit_service = mock_audit_service\n    return service\n@pytest.fixture\ndef sample_student():\n    return Student(",
+        "detail": "backend.tests.test_attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "attendance_service",
+        "kind": 2,
+        "importPath": "backend.tests.test_attendance_service",
+        "description": "backend.tests.test_attendance_service",
+        "peekOfCode": "def attendance_service(mock_db, mock_audit_service):\n    service = AttendanceService(mock_db)\n    service.audit_service = mock_audit_service\n    return service\n@pytest.fixture\ndef sample_student():\n    return Student(\n        id=1,\n        student_number=\"12345\",\n        nickname=\"test_user\",",
+        "detail": "backend.tests.test_attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "sample_student",
+        "kind": 2,
+        "importPath": "backend.tests.test_attendance_service",
+        "description": "backend.tests.test_attendance_service",
+        "peekOfCode": "def sample_student():\n    return Student(\n        id=1,\n        student_number=\"12345\",\n        nickname=\"test_user\",\n        first_name=\"Test\",\n        last_name=\"Student\",\n        school_level=\"יסודי\",\n        activity_status=\"פעיל\"\n    )",
+        "detail": "backend.tests.test_attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "sample_attendance",
+        "kind": 2,
+        "importPath": "backend.tests.test_attendance_service",
+        "description": "backend.tests.test_attendance_service",
+        "peekOfCode": "def sample_attendance():\n    return Attendance(\n        id=1,\n        student_id=1,\n        date=date.today(),\n        status=AttendanceStatus.NOT_REPORTED,\n        sub_status=SubStatus.NONE,\n        reported_by=ReportedBy.STUDENT\n    )\nclass TestAttendanceService:",
+        "detail": "backend.tests.test_attendance_service",
+        "documentation": {}
+    },
+    {
+        "label": "TestSystemIntegration",
+        "kind": 6,
+        "importPath": "backend.tests.test_integration",
+        "description": "backend.tests.test_integration",
+        "peekOfCode": "class TestSystemIntegration:\n    \"\"\"Integration tests for the complete system\"\"\"\n    def test_complete_student_workflow(self, populated_db, sample_student):\n        \"\"\"Test complete student workflow from creation to attendance\"\"\"\n        student_service = StudentService(populated_db)\n        attendance_service = AttendanceService(populated_db)\n        # Create a new student\n        new_student_data = StudentCreate(\n            student_number=\"99999\",\n            nickname=\"new_user\",",
+        "detail": "backend.tests.test_integration",
+        "documentation": {}
+    }
+]

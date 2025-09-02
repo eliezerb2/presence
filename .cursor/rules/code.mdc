@@ -1,0 +1,8 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+- do not ask what technologies to use
+- use latest technologies and packages
