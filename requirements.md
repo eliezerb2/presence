@@ -1,0 +1,161 @@
+
+> בנה אפליקציית נוכחות לבית ספר אחד (<100 תלמידים), נוכחות ברמת בית ספר (ללא כיתות).
+>
+> טאבלט אחד משמש את התלמידים בדלת הכניסה (ללא התחברות); **אחראי נוכחות** נכנס מכל מחשב/טלפון.
+>
+> אין QR אישי — זיהוי תלמידים לפי  **מספר תלמיד** ,  **כינוי (nickname)** , **שם פרטי** או **שם משפחה** במסך הקיוסק.
+
+---
+
+## סטטוסים
+
+* **סטטוס ראשי:** לא דיווח, נוכח, יצא, יום לא בא לי, חיסור מאושר, אישור היעדרות קבוע
+* **סטטוס משנה (`sub_status`):** ללא, איחור, נסגר אוטומטית
+
+---
+
+## סכמת נתונים (עם IDs)
+
+**students**
+
+* `id` (PK)
+* `student_number` (Unique, חובה) – מספר תלמיד פנימי של בית הספר
+* `nickname` (Unique, ניתן לשינוי בממשק הניהול)
+* `first_name`, `last_name`, `phone_number`
+* `school_level` ∈ {יסודי, תיכון}
+* `activity_status` ∈ {פעיל, לא פעיל, מושעה}
+
+**attendance** (רישום יומי)
+
+* `id` (PK)
+* `student_id` (FK → students.id)
+* `date` (תאריך; יחד עם `student_id` מגדיר ייחודיות יומית)
+* `status` ∈ {לא דיווח, נוכח, יצא, יום לא בא לי, חיסור מאושר, אישור היעדרות קבוע}
+* `sub_status` ∈ {ללא, איחור, נסגר אוטומטית}
+* `reported_by` ∈ {student, manager, auto}
+* `check_in_time` (אופציונלי)
+* `check_out_time` (אופציונלי)
+* `closed_reason` ∈ {n/a, manual, auto_16}
+* `override_locked` (boolean, ברירת מחדל `false`)
+* `override_locked_at` (timestamp, אופציונלי)
+* **Constraint:** ייחודיות (`student_id`, `date`)
+
+**permanent_absences** (אישורי היעדרות קבועים)
+
+* `id` (PK)
+* `student_id` (FK)
+* `weekday` ∈ {א, ב, ג, ד, ה}
+* `reason` (טקסט)
+* **Constraint:** ייחודיות (`student_id`, `weekday`)
+
+**school_holidays** (חגים/חופשות)
+
+* `id` (PK)
+* `date`, `description`
+
+**settings** (ברירות מחדל גלובליות)
+
+* `id` (PK, יחיד)
+* `lateness_threshold_per_month_default` (איחורים מותר/חודש)
+* `max_yom_lo_ba_li_per_month_default` (“לא בא לי” מותר/חודש; ברירת מחדל 2)
+* `court_chair_name`, `court_chair_phone`
+
+**student_monthly_overrides** (Overrides לפי תלמיד וחודש)
+
+* `id` (PK)
+* `student_id` (FK → students.id)
+* `year_month` (YYYY-MM)
+* `lateness_threshold_override` (איחורים מותר/חודש לאותו תלמיד בחודש זה)
+* `max_yom_lo_ba_li_override` (“לא בא לי” מותר/חודש לאותו תלמיד בחודש זה)
+* **Constraint:** ייחודיות (`student_id`, `year_month`)
+
+**claims** (“בית משפט”)
+
+* `id` (PK)
+* `student_id` (FK)
+* `date_opened`
+* `reason` ∈ {late_threshold, third_yom_lo_ba_li, other}
+* `notified_to` (array/json: {manager, student, court_chair})
+* `status` ∈ {open, closed}
+
+**audit_log**
+
+* `id` (PK), `actor` (manager/auto/student), `action`, `entity`, `entity_id`, `before`, `after`, `timestamp`
+
+---
+
+## כללי שנה״ל וימי פעילות
+
+* **תיכון** לומדים עד **20/06** (כולל); **יסודי** עד **30/06** (כולל).
+* בית הספר פעיל **א׳–ה׳** בלבד.
+* בימי `school_holidays`, בשישי/שבת, או אחרי תאריך הסיום לפי `school_level` —  **לא לשלוח תזכורות ולא להריץ אוטומציות** .
+
+---
+
+## לוגיקה עסקית ואוטומציות (סדר ביצוע)
+
+1. **היעדרות קבועה בבוקר**
+   * אם קיימת `permanent_absences` ליום הנוכחי → צור/עדכן `attendance` עם
+
+     `status='אישור היעדרות קבוע'`, `sub_status='ללא'`, `reported_by='auto'`.
+   * תלמידים אלו  **לא מקבלים תזכורת 09:30** .
+2. **09:30 — תזכורת WhatsApp**
+   * שלח **רק** לתלמידים עם `activity_status='פעיל'` ש־`status='לא דיווח'` (לא ע״י תלמיד ולא ע״י מנהל),
+
+     **ואין** להם `permanent_absences` ליום זה.
+3. **10:00–10:30 — איחור אוטומטי**
+   * אם עדיין “לא דיווח”: `status='נוכח'`, `sub_status='איחור'`, `reported_by='auto'`, `check_in_time=now()`.
+   * אחראי יכול לשנות ידנית (Override).
+4. **לאחר 10:30 — “יום לא בא לי” אוטומטי**
+   * אם עדיין “לא דיווח” ב-10:30: `status='יום לא בא לי'`, `sub_status='ללא'`, `reported_by='auto'`.
+   * אחראי יכול לשנות ידנית.
+5. **16:00 — סגירת יום אוטומטית**
+   * אם אין `check_out_time`: `status='יצא'`, `sub_status='נסגר אוטומטית'`,
+
+     `reported_by='auto'`, `check_out_time='16:00'`, `closed_reason='auto_16'`.
+6. **ספירות חודשיות ו“בית משפט”**
+   * לכל תלמיד, חישוב חודשי:
+     * `late_count` = ימים עם `sub_status='איחור'`
+     * `yom_lo_ba_li_count` = ימים עם `status='יום לא בא לי'`
+   * קביעת ספים:
+     * אם קיימת רשומת `student_monthly_overrides` לאותו `student_id` ו־`year_month` → השתמש בערכים שם
+     * אחרת → `settings.lateness_threshold_per_month_default` ו־`settings.max_yom_lo_ba_li_per_month_default`
+   * הפעלת תביעה:
+     * אם `late_count >` סף האיחורים → `claims` (`reason='late_threshold'`) + WhatsApp למנהל, לתלמיד, וליו״ר
+     * אם `yom_lo_ba_li_count >=` הסף המותר → `claims` (`reason='third_yom_lo_ba_li'`) + WhatsApp לאותם נמענים
+   * שמור היסטוריה של כל התביעות וההתראות
+
+---
+
+## יכולת Override של אחראי נוכחות
+
+* אחראי יכול **לעדכן/להחליף כל שדה בדיווח** (`status`, `sub_status`, `reported_by`, `check_in_time`, `check_out_time`, `closed_reason`) בכל זמן, גם רטרואקטיבית.
+* בעת Override:
+  * `override_locked=true`, `override_locked_at=now()`
+  * אוטומציות עתידיות **לא משנות** רשומות נעולות
+  * ניתן לפתוח נעילה ידנית (מתועד ב־`audit_log`)
+* כל שינוי ידני מתועד ב־`audit_log` עם `actor='manager'`, `action='override_update'`
+
+---
+
+## ממשקים
+
+**קיוסק טאבלט לתלמידים**
+
+* שדה חיפוש אחד המסנן לפי: `student_number` או `nickname` או `first_name` או `last_name`
+* הצגת התוצאה → כפתורי “כניסה”/“יציאה” גדולים; ללא התחברות
+
+**ממשק אחראי (נייד/דסקטופ)**
+
+* לוח נוכחות יומי: סטטוס, `sub_status`, מי דיווח, שעות, חיפוש/מסננים
+* שינוי ידני (Override) של כל שדה בנוכחות
+* ספירות חודשיות, פתיחה/סגירה של תביעות, צפייה בהיסטוריית תביעות
+* יצוא CSV
+
+**ניהול**
+
+* תלמידים: CRUD, שינוי `nickname`/`student_number`, שינוי `activity_status`
+* אישורי היעדרות קבועים: CRUD
+* חגים/חופשות: CRUD
+* הגדרות גלובליות: עדכון X (“איחורים”) ו-“לא בא לי” ברירת מחדל
+* Overrides חודשיים: CRUD ל־`student_monthly_overrides`
