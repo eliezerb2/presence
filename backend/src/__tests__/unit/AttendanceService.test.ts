@@ -8,7 +8,6 @@ describe('AttendanceService', () => {
   let mockRepo: any;
 
   beforeEach(() => {
-    service = new AttendanceService();
     mockRepo = {
       findOne: jest.fn(),
       create: jest.fn(),
@@ -16,6 +15,7 @@ describe('AttendanceService', () => {
       find: jest.fn(),
     };
     (AppDataSource.getRepository as jest.Mock).mockReturnValue(mockRepo);
+    service = new AttendanceService();
   });
 
   describe('checkIn', () => {
@@ -47,7 +47,8 @@ describe('AttendanceService', () => {
       };
       
       mockRepo.findOne.mockResolvedValue(existingAttendance);
-      mockRepo.save.mockResolvedValue({ ...existingAttendance, status: 'נוכח' });
+      const updatedAttendance = { ...existingAttendance, status: 'נוכח' };
+      mockRepo.save.mockResolvedValue(updatedAttendance);
 
       const result = await service.checkIn(studentId);
 

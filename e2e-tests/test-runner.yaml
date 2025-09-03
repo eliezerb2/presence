@@ -27,16 +27,16 @@ spec:
           
           # Test kiosk search functionality
           echo "Testing kiosk search..."
-          curl -f "http://frontend.presence.svc.cluster.local/api/kiosk/search?query=יוסי" || exit 1
+          curl -f "http://backend.presence.svc.cluster.local:3000/api/kiosk/search?query=test" || exit 1
           
           # Test manager attendance view
           echo "Testing manager attendance..."
-          curl -f "http://frontend.presence.svc.cluster.local/api/manager/attendance" || exit 1
+          curl -f "http://backend.presence.svc.cluster.local:3000/api/manager/attendance" || exit 1
           
           # Test admin endpoints
           echo "Testing admin endpoints..."
-          curl -f "http://frontend.presence.svc.cluster.local/api/admin/students" || exit 1
-          curl -f "http://frontend.presence.svc.cluster.local/api/admin/settings" || exit 1
+          curl -f "http://backend.presence.svc.cluster.local:3000/api/admin/students" || exit 1
+          curl -f "http://backend.presence.svc.cluster.local:3000/api/admin/settings" || exit 1
           
           echo "All E2E tests passed!"
       - name: load-test
@@ -50,7 +50,7 @@ spec:
           
           # Simulate multiple concurrent kiosk searches
           for i in $(seq 1 10); do
-            curl -s "http://frontend.presence.svc.cluster.local/api/kiosk/search?query=test$i" &
+            curl -s "http://backend.presence.svc.cluster.local:3000/api/kiosk/search?query=test$i" &
           done
           wait
           

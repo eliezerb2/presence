@@ -9,7 +9,6 @@ describe('AutomationService', () => {
   let mockHolidayRepo: any;
 
   beforeEach(() => {
-    service = new AutomationService();
     mockAttendanceRepo = {
       find: jest.fn(),
       save: jest.fn(),
@@ -29,6 +28,7 @@ describe('AutomationService', () => {
       if (entity.name === 'SchoolHoliday') return mockHolidayRepo;
       return {};
     });
+    service = new AutomationService();
   });
 
   describe('isSchoolDay', () => {
@@ -45,7 +45,7 @@ describe('AutomationService', () => {
     });
 
     it('should return false for holidays', async () => {
-      const date = new Date('2024-01-01');
+      const date = new Date('2024-01-02'); // Tuesday
       mockHolidayRepo.findOne.mockResolvedValue({ date });
       
       const result = await service.isSchoolDay(date);
@@ -53,7 +53,7 @@ describe('AutomationService', () => {
     });
 
     it('should return true for regular school days', async () => {
-      const monday = new Date('2024-01-01'); // Monday
+      const monday = new Date('2024-01-08'); // Monday
       mockHolidayRepo.findOne.mockResolvedValue(null);
       
       const result = await service.isSchoolDay(monday);
@@ -71,10 +71,10 @@ describe('AutomationService', () => {
       mockAttendanceRepo.find.mockResolvedValue(unreportedAttendances);
       mockHolidayRepo.findOne.mockResolvedValue(null);
       
-      // Mock current time to be 10:15 AM
+      // Mock current time to be 10:15 AM on a school day
       jest.spyOn(Date.prototype, 'getHours').mockReturnValue(10);
       jest.spyOn(Date.prototype, 'getMinutes').mockReturnValue(15);
-      jest.spyOn(Date.prototype, 'getDay').mockReturnValue(1); // Monday
+      jest.spyOn(service, 'isSchoolDay').mockResolvedValue(true);
 
       await service.processLateArrivals();
 
