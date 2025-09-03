@@ -1,0 +1,70 @@
+# Default values for presence.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+namespace: presence
+
+api:
+  replicaCount: 1
+  image:
+    repository: presence-api
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: ""
+  service:
+    type: ClusterIP
+    port: 3000
+
+kiosk:
+  replicaCount: 1
+  image:
+    repository: presence-kiosk
+    pullPolicy: IfNotPresent
+    tag: ""
+  service:
+    type: ClusterIP
+    port: 80
+
+manager:
+  replicaCount: 1
+  image:
+    repository: presence-manager
+    pullPolicy: IfNotPresent
+    tag: ""
+  service:
+    type: ClusterIP
+    port: 80
+
+postgresql:
+  auth:
+    database: "presence"
+    postgresPassword: "changeme"
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: presence.local
+      paths:
+        - path: /api
+          pathType: ImplementationSpecific
+          service:
+            name: api
+            port: 3000
+        - path: /manager
+          pathType: ImplementationSpecific
+          service:
+            name: manager
+            port: 80
+        - path: /
+          pathType: ImplementationSpecific
+          service:
+            name: kiosk
+            port: 80
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local

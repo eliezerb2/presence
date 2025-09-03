@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "presence.fullname" . }}-kiosk
+  labels:
+    {{- include "presence.labels" . | nindent 4 }}
+    app.kubernetes.io/component: kiosk
+spec:
+  replicas: {{ .Values.kiosk.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "presence.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: kiosk
+  template:
+    metadata:
+      labels:
+        {{- include "presence.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: kiosk
+    spec:
+      containers:
+        - name: kiosk
+          image: "{{ .Values.kiosk.image.repository }}:{{ .Values.kiosk.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.kiosk.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 80
+              protocol: TCP
