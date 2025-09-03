@@ -28,7 +28,7 @@
    6. always uninstall the helm chart and verify that all application resources are deleted before redeploying the helm chart
    7. when using a solution like postgres, use existing, recommended helm charts
    8. when deploying multuple pods - deploy in the order of dependency
-   9. add a powershell script to undeploy
+   9. add a powershell script to undeploy - the script should verify that no resource of the app exists
 5. test
 
    1. all tests should be performed in a kubernetes deployment
