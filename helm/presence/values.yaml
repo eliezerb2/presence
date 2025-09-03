@@ -1,0 +1,22 @@
+namespace: presence
+
+backend:
+  image: presence-backend:latest
+  imagePullPolicy: Never
+  replicas: 1
+  port: 3000
+
+frontend:
+  image: presence-frontend:latest
+  imagePullPolicy: Never
+  replicas: 1
+  port: 80
+
+postgres:
+  enabled: true
+  auth:
+    postgresPassword: postgres
+    database: presence
+  primary:
+    persistence:
+      size: 1Gi

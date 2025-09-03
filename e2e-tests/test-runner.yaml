@@ -1,0 +1,57 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: presence-test
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: e2e-test
+  namespace: presence-test
+spec:
+  template:
+    metadata:
+      labels:
+        app: e2e-test
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: test-runner
+        image: node:alpine
+        command: ["/bin/sh"]
+        args:
+        - -c
+        - |
+          apk add --no-cache curl
+          echo "Starting E2E tests..."
+          
+          # Test kiosk search functionality
+          echo "Testing kiosk search..."
+          curl -f "http://frontend.presence.svc.cluster.local/api/kiosk/search?query=יוסי" || exit 1
+          
+          # Test manager attendance view
+          echo "Testing manager attendance..."
+          curl -f "http://frontend.presence.svc.cluster.local/api/manager/attendance" || exit 1
+          
+          # Test admin endpoints
+          echo "Testing admin endpoints..."
+          curl -f "http://frontend.presence.svc.cluster.local/api/admin/students" || exit 1
+          curl -f "http://frontend.presence.svc.cluster.local/api/admin/settings" || exit 1
+          
+          echo "All E2E tests passed!"
+      - name: load-test
+        image: node:alpine
+        command: ["/bin/sh"]
+        args:
+        - -c
+        - |
+          apk add --no-cache curl
+          echo "Running load tests..."
+          
+          # Simulate multiple concurrent kiosk searches
+          for i in $(seq 1 10); do
+            curl -s "http://frontend.presence.svc.cluster.local/api/kiosk/search?query=test$i" &
+          done
+          wait
+          
+          echo "Load tests completed!"
