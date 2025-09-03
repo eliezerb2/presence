@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: automation
+  namespace: {{ .Values.namespace }}
+spec:
+  schedule: "{{ .Values.automation.schedule }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          initContainers:
+          - name: wait-for-backend
+            image: curlimages/curl
+            command: ['sh', '-c', 'until curl -f http://backend:8000/; do sleep 5; done']
+          containers:
+          - name: automation
+            image: {{ .Values.automation.image.repository }}:{{ .Values.automation.image.tag }}
+            imagePullPolicy: {{ .Values.automation.image.pullPolicy }}
+            command: ["python", "-m", "app.automation"]
+            env:
+            - name: DATABASE_URL
+              value: {{ .Values.backend.env.DATABASE_URL }}
+          restartPolicy: OnFailure

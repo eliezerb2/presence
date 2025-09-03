@@ -1,0 +1,41 @@
+namespace: attendance-system
+
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "password"
+    database: "attendance"
+  primary:
+    persistence:
+      enabled: true
+      size: 1Gi
+
+backend:
+  image:
+    repository: attendance-backend
+    tag: latest
+    pullPolicy: Never
+  service:
+    type: ClusterIP
+    port: 8000
+  env:
+    DATABASE_URL: "postgresql+asyncpg://postgres:password@attendance-system-postgresql:5432/attendance"
+
+frontend:
+  image:
+    repository: attendance-frontend
+    tag: latest
+    pullPolicy: Never
+  service:
+    type: NodePort
+    port: 3000
+    nodePort: 30080
+  env:
+    REACT_APP_API_BASE: "http://localhost:30081/api"
+
+automation:
+  image:
+    repository: attendance-backend
+    tag: latest
+    pullPolicy: Never
+  schedule: "*/5 * * * *"  # Every 5 minutes
