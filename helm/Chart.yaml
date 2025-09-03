@@ -1,0 +1,11 @@
+apiVersion: v2
+name: presence-app
+description: A Helm chart for the Presence application
+version: 0.1.0
+appVersion: 1.0.0
+
+dependencies:
+  - name: postgresql
+    version: "12.x.x" # Use a compatible version
+    repository: "https://charts.bitnami.com/bitnami"
+    condition: postgresql.enabled

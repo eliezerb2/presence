@@ -1,0 +1,50 @@
+backend:
+  replicaCount: 1
+  image:
+    repository: presence-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 8000
+
+frontend:
+  replicaCount: 1
+  image:
+    repository: presence-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: {}
+  host: chart-example.local
+  path: /
+  pathType: ImplementationSpecific
+
+postgresql:
+  enabled: true
+  nameOverride: postgresql
+  auth:
+    username: user
+    password: password
+    database: presence_db
+  primary:
+    service:
+      name: postgresql
+      ports:
+        postgresql: 5432
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+serviceAccount:
+  create: false
+  name: default

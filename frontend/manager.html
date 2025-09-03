@@ -1,0 +1,78 @@
+<div id="manager-container">
+    <h2>Manager Interface</h2>
+    <div class="controls">
+        <input type="date" id="attendance-date-input">
+        <button id="load-attendance-btn">Load Attendance</button>
+        <button id="export-csv-btn">Export CSV</button>
+    </div>
+    <div id="attendance-table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Status</th>
+                    <th>Sub Status</th>
+                    <th>Reported By</th>
+                    <th>Check In</th>
+                    <th>Check Out</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-table-body">
+                <!-- Attendance rows will be loaded here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Override Modal -->
+    <div id="override-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Override Attendance</h3>
+            <form id="override-form">
+                <input type="hidden" id="override-attendance-id">
+                <label for="override-status">Status:</label>
+                <select id="override-status">
+                    <option value="לא דיווח">לא דיווח</option>
+                    <option value="נוכח">נוכח</option>
+                    <option value="יצא">יצא</option>
+                    <option value="יום לא בא לי">יום לא בא לי</option>
+                    <option value="חיסור מאושר">חיסור מאושר</option>
+                    <option value="אישור היעדרות קבוע">אישור היעדרות קבוע</option>
+                </select><br>
+
+                <label for="override-sub-status">Sub Status:</label>
+                <select id="override-sub-status">
+                    <option value="ללא">ללא</option>
+                    <option value="איחור">איחור</option>
+                    <option value="נסגר אוטומטית">נסגר אוטומטית</option>
+                </select><br>
+
+                <label for="override-reported-by">Reported By:</label>
+                <select id="override-reported-by">
+                    <option value="student">student</option>
+                    <option value="manager">manager</option>
+                    <option value="auto">auto</option>
+                </select><br>
+
+                <label for="override-check-in">Check In Time:</label>
+                <input type="datetime-local" id="override-check-in"><br>
+
+                <label for="override-check-out">Check Out Time:</label>
+                <input type="datetime-local" id="override-check-out"><br>
+
+                <label for="override-closed-reason">Closed Reason:</label>
+                <select id="override-closed-reason">
+                    <option value="n/a">n/a</option>
+                    <option value="manual">manual</option>
+                    <option value="auto_16">auto_16</option>
+                </select><br>
+
+                <label for="override-locked">Override Locked:</label>
+                <input type="checkbox" id="override-locked"><br>
+
+                <button type="submit">Save Override</button>
+            </form>
+        </div>
+    </div>
+</div>
