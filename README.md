@@ -1,10 +1,12 @@
 1. environment
 
    1. this is a windows host
-   2. use powershell with -ExecutionPolicy Bypass, and not bat files
-   3. never use linux commands on the host
-   4. never run npm, npx, pip, python or any other such thing on the host
-   5. do not ask for permissions, and assume you are authorized to perform the following:
+   2. use powershell and not bat files
+   3. use -ExecutionPolicy Bypass when running powershell
+   4. never use linux commands on the host
+   5. never update system components of the host (e.g. hosts file))
+   6. never run npm, npx, pip, python or any other such thing on the host
+   7. do not ask for permissions, and assume you are authorized to perform the following:
 
       1. create, edit and delete files and folders in the vscode workspace
       2. build docker images
@@ -14,6 +16,7 @@
 
    1. do not ask what technologies to use
    2. use latest technologies and packages
+   3. use python for components which need to access a DB
 3. build
 
    1. always use docker
@@ -27,8 +30,11 @@
    5. use helm to deploy the application and create all necessary kubernetes resources
    6. always uninstall the helm chart and verify that all application resources are deleted before redeploying the helm chart
    7. when using a solution like postgres, use existing, recommended helm charts
-   8. when deploying multuple pods - deploy in the order of dependency
-   9. add a powershell script to undeploy - the script should verify that no resource of the app exists
+   8. when deploying multiple pods - deploy in the order of dependency
+   9. if pod2 is depending on pod1 - wait with the deployment of pod2 until pod1 is ready, using init container
+   10. add a powershell script to undeploy - the script should verify that no resource of the app exists
+   11. all powershell scripts must contain error handling
+   12. all powershell scripts must check logs after running anything and report on errors
 5. test
 
    1. all tests should be performed in a kubernetes deployment
@@ -39,7 +45,7 @@
    6. generate test data for the tests
    7. use mocking and stubbing where necessary
    8. test each service individually
-   9. test the UI
+   9. test the UI using solutions like selenium from another pod in another kubernetes namespace
    10. generate manual test scripts
 6. process
 
@@ -49,9 +55,9 @@
          1. write unit tests for the code
          2. write the code
          3. use mocks to simulate integration
-         4. adujst the unit tests
+         4. adjust the unit tests
          5. review the code, fix and review until no comments
-         6. adujst the unit tests
+         6. adjust the unit tests
          7. build the docker
          8. go to the start to address any issues from the build
       2. as an expert devops
@@ -59,9 +65,10 @@
          1. add the component to the helm chart
          2. review the helm chart, fix and review until no comments
          3. deploy to run the unit tests
+         4. check the logs to verify that there are no errors
       3. return to the first phase of an expert developer to address any issues with the code, until all unit tests are OK
-      4. if mockes were used - switch from the mocks to integration with other components and run integration tests
-      5. repeat the process unitl all integration tests are OK
+      4. if mocks were used - switch from the mocks to integration with other components and run integration tests
+      5. repeat the process until all integration tests are OK and there are no errors in the logs
    2. involve the user only after the complete application is ready
    3. only perform end to end tests after integration tests complete successfully
    4. never wait without checking for something
