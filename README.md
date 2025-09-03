@@ -1,7 +1,7 @@
 1. environment
 
    1. this is a windows host
-   2. use powershell and not bat files
+   2. use powershell with -ExecutionPolicy Bypass, and not bat files
    3. never use linux commands on the host
    4. never run npm, npx, pip, python or any other such thing on the host
    5. do not ask for permissions, and assume you are authorized to perform the following:
