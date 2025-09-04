@@ -1,0 +1,1337 @@
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מערכת נוכחות בית ספר</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                borderRadius: {
+                    lg: "var(--radius)",
+                    md: "calc(var(--radius) - 2px)",
+                    sm: "calc(var(--radius) - 4px)",
+                },
+                colors: {
+                    background: "var(--background)",
+                    foreground: "var(--foreground)",
+                    card: {
+                        DEFAULT: "var(--card)",
+                        foreground: "var(--card-foreground)",
+                    },
+                    popover: {
+                        DEFAULT: "var(--popover)",
+                        foreground: "var(--popover-foreground)",
+                    },
+                    primary: {
+                        DEFAULT: "var(--primary)",
+                        foreground: "var(--primary-foreground)",
+                    },
+                    secondary: {
+                        DEFAULT: "var(--secondary)",
+                        foreground: "var(--secondary-foreground)",
+                    },
+                    muted: {
+                        DEFAULT: "var(--muted)",
+                        foreground: "var(--muted-foreground)",
+                    },
+                    accent: {
+                        DEFAULT: "var(--accent)",
+                        foreground: "var(--accent-foreground)",
+                    },
+                    destructive: {
+                        DEFAULT: "var(--destructive)",
+                        foreground: "var(--destructive-foreground)",
+                    },
+                    success: {
+                        DEFAULT: "var(--success)",
+                        foreground: "var(--success-foreground)",
+                    },
+                    warning: {
+                        DEFAULT: "var(--warning)",
+                        foreground: "var(--warning-foreground)",
+                    },
+                    border: "var(--border)",
+                    input: "var(--input)",
+                    ring: "var(--ring)",
+                },
+                fontFamily: {
+                    sans: ["var(--font-sans)"],
+                    serif: ["var(--font-serif)"],
+                    mono: ["var(--font-mono)"],
+                }
+            },
+        }
+    };
+    </script>
+    <style>
+        :root {
+            --background: hsl(210 40% 96%);
+            --foreground: hsl(222.2 84% 4.9%);
+            --card: hsl(0 0% 100%);
+            --card-foreground: hsl(222.2 84% 4.9%);
+            --popover: hsl(0 0% 100%);
+            --popover-foreground: hsl(222.2 84% 4.9%);
+            --primary: hsl(210 79% 46%);
+            --primary-foreground: hsl(210 20% 98%);
+            --secondary: hsl(174 73% 20%);
+            --secondary-foreground: hsl(174 20% 98%);
+            --muted: hsl(210 40% 96%);
+            --muted-foreground: hsl(215.4 16.3% 46.9%);
+            --accent: hsl(36 100% 47%);
+            --accent-foreground: hsl(36 20% 98%);
+            --destructive: hsl(0 72% 51%);
+            --destructive-foreground: hsl(0 20% 98%);
+            --success: hsl(120 60% 35%);
+            --success-foreground: hsl(120 20% 98%);
+            --warning: hsl(36 100% 47%);
+            --warning-foreground: hsl(36 20% 98%);
+            --border: hsl(214.3 31.8% 91.4%);
+            --input: hsl(214.3 31.8% 91.4%);
+            --ring: hsl(222.2 84% 4.9%);
+            --radius: 8px;
+            --font-sans: "Inter", "Segoe UI", system-ui, sans-serif;
+            --font-serif: "Georgia", serif;
+            --font-mono: "JetBrains Mono", "Courier New", monospace;
+        }
+
+        [data-theme="dark"] {
+            --background: hsl(222.2 84% 4.9%);
+            --foreground: hsl(210 40% 98%);
+            --card: hsl(222.2 84% 4.9%);
+            --card-foreground: hsl(210 40% 98%);
+            --popover: hsl(222.2 84% 4.9%);
+            --popover-foreground: hsl(210 40% 98%);
+            --primary: hsl(210 79% 60%);
+            --primary-foreground: hsl(222.2 84% 4.9%);
+            --secondary: hsl(174 73% 30%);
+            --secondary-foreground: hsl(174 20% 98%);
+            --muted: hsl(217.2 32.6% 17.5%);
+            --muted-foreground: hsl(215 20.2% 65.1%);
+            --accent: hsl(36 100% 60%);
+            --accent-foreground: hsl(222.2 84% 4.9%);
+            --destructive: hsl(0 72% 60%);
+            --destructive-foreground: hsl(0 20% 98%);
+            --success: hsl(120 60% 45%);
+            --success-foreground: hsl(120 20% 98%);
+            --warning: hsl(36 100% 60%);
+            --warning-foreground: hsl(222.2 84% 4.9%);
+            --border: hsl(217.2 32.6% 17.5%);
+            --input: hsl(217.2 32.6% 17.5%);
+            --ring: hsl(212.7 26.8% 83.9%);
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: var(--font-sans);
+            direction: rtl;
+        }
+
+        .status-badge {
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 0.25rem 0.75rem;
+            border-radius: calc(var(--radius) - 2px);
+            white-space: nowrap;
+        }
+
+        .status-present { background-color: hsl(var(--success) / 0.1); color: hsl(var(--success)); }
+        .status-absent { background-color: hsl(var(--destructive) / 0.1); color: hsl(var(--destructive)); }
+        .status-late { background-color: hsl(var(--warning) / 0.1); color: hsl(var(--warning)); }
+        .status-left { background-color: hsl(var(--secondary) / 0.1); color: hsl(var(--secondary)); }
+        .status-not-reported { background-color: hsl(var(--muted) / 0.5); color: hsl(var(--muted-foreground)); }
+        .status-permanent-absence { background-color: hsl(var(--accent) / 0.1); color: hsl(var(--accent)); }
+
+        .kiosk-button {
+            min-height: 80px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            border-radius: var(--radius);
+            transition: all 0.2s ease-in-out;
+        }
+
+        .kiosk-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: var(--radius);
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-background text-foreground min-h-screen">
+    <!-- @COMPONENT: AppLayout -->
+    <div id="app-container" class="min-h-screen">
+        <!-- Navigation Header -->
+        <nav class="bg-card shadow-sm border-b border-border sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-reverse space-x-4">
+                        <h1 class="text-xl font-bold text-foreground">מערכת נוכחות</h1>
+                        <span class="text-sm text-muted-foreground hidden sm:inline">בית ספר דמו</span>
+                    </div>
+                    <div class="flex items-center space-x-reverse space-x-4">
+                        <!-- Mode Toggle Buttons -->
+                        <div class="bg-muted rounded-lg p-1 hidden md:flex" data-implementation="Toggle between different interface modes">
+                            <button id="kiosk-mode" class="px-4 py-2 rounded-md bg-primary text-primary-foreground text-sm font-medium transition-colors">
+                                <i class="fas fa-tablet-alt ml-2"></i>קיוסק תלמידים
+                            </button>
+                            <button id="manager-mode" class="px-4 py-2 rounded-md text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">
+                                <i class="fas fa-chart-line ml-2"></i>ניהול נוכחות
+                            </button>
+                            <button id="admin-mode" class="px-4 py-2 rounded-md text-muted-foreground hover:text-foreground text-sm font-medium transition-colors">
+                                <i class="fas fa-cog ml-2"></i>ניהול מערכת
+                            </button>
+                        </div>
+                        
+                        <!-- User Info (Manager Mode Only) -->
+                        <div class="hidden manager-only admin-only items-center space-x-reverse space-x-3" data-bind="currentUser">
+                            <div class="text-right">
+                                <p class="text-sm font-medium text-foreground">שרה כהן</p>
+                                <p class="text-xs text-muted-foreground">אחראית נוכחות</p>
+                            </div>
+                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
+                                <span class="text-primary-foreground text-sm font-medium">ש</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- @COMPONENT: KioskInterface -->
+        <div id="kiosk-interface" class="kiosk-view">
+            <div class="max-w-2xl mx-auto p-6 min-h-screen flex flex-col">
+                <!-- Header -->
+                <div class="text-center mb-8 fade-in">
+                    <h2 class="text-4xl font-bold text-primary mb-2">ברוכים הבאים</h2>
+                    <p class="text-xl text-muted-foreground">דווחו על הגעתכם לבית הספר</p>
+                    <div class="mt-4 text-lg text-foreground">
+                        <i class="fas fa-calendar-day text-primary ml-2"></i>
+                        <span data-bind="currentDate">יום רביעי, 15 בנובמבר 2024</span>
+                    </div>
+                </div>
+
+                <!-- Search Section -->
+                <div class="bg-card rounded-xl shadow-lg p-6 mb-6 fade-in">
+                    <label for="student-search" class="block text-lg font-medium text-foreground mb-4">
+                        חפש תלמיד לפי מספר, כינוי, שם פרטי או משפחה
+                    </label>
+                    <input type="text" 
+                           id="student-search" 
+                           class="w-full text-2xl p-6 border-2 border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary bg-background text-foreground placeholder:text-muted-foreground"
+                           placeholder="הקלד כאן..."
+                           data-implementation="Real-time search with debouncing">
+                </div>
+
+                <!-- Search Results -->
+                <div id="search-results" class="flex-1">
+                    <!-- No Search State -->
+                    <div id="no-search" class="text-center py-12">
+                        <i class="fas fa-search text-6xl text-muted-foreground mb-4"></i>
+                        <p class="text-xl text-muted-foreground">התחל להקליד כדי לחפש תלמיד</p>
+                    </div>
+
+                    <!-- Search Results List -->
+                    <div id="student-results" class="space-y-4 hidden">
+                        <!-- @MAP: searchResults.map(student => ( -->
+                        <div class="bg-card rounded-lg shadow-md p-6 border border-border hover:shadow-lg transition-shadow">
+                            <div class="flex items-center justify-between">
+                                <div class="flex-1">
+                                    <h3 class="text-xl font-semibold text-foreground" data-bind="student.fullName">יוסף ישראלי</h3>
+                                    <p class="text-muted-foreground">
+                                        <span data-bind="student.nickname">יוסיק</span> • 
+                                        <span data-bind="student.student_number">מס' 1234</span> • 
+                                        <span data-bind="student.school_level">תיכון</span>
+                                    </p>
+                                    <div class="mt-2">
+                                        <span class="status-badge status-not-reported" data-bind="student.currentStatus">לא דיווח</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col space-y-3 mr-6">
+                                    <button class="kiosk-button bg-success hover:bg-success/90 text-success-foreground px-8 flex items-center justify-center"
+                                            data-event="click:checkIn" 
+                                            data-implementation="Should record check-in time and update status">
+                                        <i class="fas fa-sign-in-alt ml-3"></i>
+                                        כניסה
+                                    </button>
+                                    <button class="kiosk-button bg-warning hover:bg-warning/90 text-warning-foreground px-8 flex items-center justify-center"
+                                            data-event="click:checkOut"
+                                            data-implementation="Should record check-out time and update status">
+                                        <i class="fas fa-sign-out-alt ml-3"></i>
+                                        יציאה
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- @END_MAP )) -->
+                    </div>
+
+                    <!-- No Results State -->
+                    <div id="no-results" class="text-center py-12 hidden">
+                        <i class="fas fa-user-slash text-6xl text-muted-foreground mb-4"></i>
+                        <p class="text-xl text-muted-foreground">לא נמצאו תלמידים התואמים את החיפוש</p>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="text-center mt-8 pt-6 border-t border-border">
+                    <p class="text-muted-foreground">
+                        <i class="fas fa-info-circle ml-2"></i>
+                        זקוקים לעזרה? פנו למזכירות
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: KioskInterface -->
+
+        <!-- @COMPONENT: ManagerInterface -->
+        <div id="manager-interface" class="manager-view admin-view hidden">
+            <div class="max-w-7xl mx-auto p-6">
+                <!-- Dashboard Header -->
+                <div class="mb-8">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                        <div>
+                            <h2 class="text-3xl font-bold text-foreground mb-2">לוח נוכחות יומי</h2>
+                            <p class="text-muted-foreground">
+                                <i class="fas fa-calendar ml-2"></i>
+                                <span data-bind="currentDate">יום רביעי, 15 בנובמבר 2024</span>
+                            </p>
+                        </div>
+                        <div class="flex items-center space-x-reverse space-x-4 mt-4 lg:mt-0">
+                            <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                    data-event="click:exportCSV"
+                                    data-implementation="Should export current attendance data to CSV">
+                                <i class="fas fa-download ml-2"></i>
+                                יצוא CSV
+                            </button>
+                            <button class="bg-secondary hover:bg-secondary/90 text-secondary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                    data-event="click:refreshData"
+                                    data-implementation="Should refresh attendance data">
+                                <i class="fas fa-sync-alt ml-2"></i>
+                                רענן נתונים
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Cards -->
+                    <div class="grid grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
+                        <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-check text-success text-xl"></i>
+                                </div>
+                                <div class="mr-4">
+                                    <p class="text-2xl font-bold text-foreground" data-bind="stats.present">82</p>
+                                    <p class="text-sm text-muted-foreground">נוכחים</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-destructive/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-times text-destructive text-xl"></i>
+                                </div>
+                                <div class="mr-4">
+                                    <p class="text-2xl font-bold text-foreground" data-bind="stats.absent">7</p>
+                                    <p class="text-sm text-muted-foreground">נעדרים</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-clock text-warning text-xl"></i>
+                                </div>
+                                <div class="mr-4">
+                                    <p class="text-2xl font-bold text-foreground" data-bind="stats.late">5</p>
+                                    <p class="text-sm text-muted-foreground">איחורים</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-calendar-times text-accent text-xl"></i>
+                                </div>
+                                <div class="mr-4">
+                                    <p class="text-2xl font-bold text-foreground" data-bind="stats.permanentAbsence">3</p>
+                                    <p class="text-sm text-muted-foreground">היעדרות קבועה</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                            <div class="flex items-center">
+                                <div class="w-12 h-12 bg-muted/20 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-question text-muted-foreground text-xl"></i>
+                                </div>
+                                <div class="mr-4">
+                                    <p class="text-2xl font-bold text-foreground" data-bind="stats.notReported">3</p>
+                                    <p class="text-sm text-muted-foreground">לא דיווח</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters and Search -->
+                <div class="bg-card rounded-lg shadow-sm p-6 mb-6 border border-border">
+                    <div class="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-reverse lg:space-x-6">
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-foreground mb-2">חיפוש תלמיד</label>
+                            <div class="relative">
+                                <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground"></i>
+                                <input type="text" 
+                                       class="w-full pl-10 pr-4 py-2 border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                       placeholder="שם, מספר תלמיד או כינוי..."
+                                       data-implementation="Filter attendance table in real-time">
+                            </div>
+                        </div>
+                        <div class="lg:w-48">
+                            <label class="block text-sm font-medium text-foreground mb-2">סטטוס</label>
+                            <select class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                    data-implementation="Filter by attendance status">
+                                <option value="">כל הסטטוסים</option>
+                                <option value="נוכח">נוכח</option>
+                                <option value="לא דיווח">לא דיווח</option>
+                                <option value="יצא">יצא</option>
+                                <option value="יום לא בא לי">יום לא בא לי</option>
+                                <option value="חיסור מאושר">חיסור מאושר</option>
+                                <option value="אישור היעדרות קבוע">היעדרות קבועה</option>
+                            </select>
+                        </div>
+                        <div class="lg:w-48">
+                            <label class="block text-sm font-medium text-foreground mb-2">רמת בית ספר</label>
+                            <select class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                    data-implementation="Filter by school level">
+                                <option value="">כל הרמות</option>
+                                <option value="יסודי">יסודי</option>
+                                <option value="תיכון">תיכון</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance Table -->
+                <div class="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
+                    <div class="table-container">
+                        <table class="w-full">
+                            <thead class="bg-muted">
+                                <tr>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">תלמיד</th>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">מספר</th>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">רמה</th>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">סטטוס</th>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">תת-סטטוס</th>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">שעת כניסה</th>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">שעת יציאה</th>
+                                    <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">דיווח ע״י</th>
+                                    <th class="text-center py-4 px-6 text-sm font-semibold text-foreground">פעולות</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-border">
+                                <!-- @MAP: attendanceRecords.map(record => ( -->
+                                <tr class="hover:bg-muted/50 transition-colors">
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center ml-3">
+                                                <span class="text-primary-foreground text-sm font-medium" data-bind="record.student.initials">י</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-foreground" data-bind="record.student.fullName">יוסף ישראלי</p>
+                                                <p class="text-sm text-muted-foreground" data-bind="record.student.nickname">יוסיק</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-foreground font-mono" data-bind="record.student.student_number">1234</td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge bg-secondary/10 text-secondary" data-bind="record.student.school_level">תיכון</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge status-present" data-bind="record.status">נוכח</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge status-late" data-bind="record.sub_status">איחור</span>
+                                    </td>
+                                    <td class="py-4 px-6 text-foreground font-mono" data-bind="record.check_in_time">08:45</td>
+                                    <td class="py-4 px-6 text-muted-foreground" data-bind="record.check_out_time">-</td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center text-muted-foreground">
+                                            <i class="fas fa-robot ml-2 text-xs"></i>
+                                            <span class="text-sm" data-bind="record.reported_by">אוטומטי</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <button class="bg-accent hover:bg-accent/90 text-accent-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                data-event="click:openOverride" 
+                                                data-implementation="Should open override modal for this record">
+                                            <i class="fas fa-edit ml-2"></i>
+                                            עריכה
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-muted/50 transition-colors">
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center ml-3">
+                                                <span class="text-primary-foreground text-sm font-medium">מ</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-foreground">מרים לוי</p>
+                                                <p class="text-sm text-muted-foreground">מירי</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-foreground font-mono">5678</td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge bg-secondary/10 text-secondary">יסודי</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge status-absent">יום לא בא לי</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge bg-muted text-muted-foreground">ללא</span>
+                                    </td>
+                                    <td class="py-4 px-6 text-muted-foreground">-</td>
+                                    <td class="py-4 px-6 text-muted-foreground">-</td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center text-muted-foreground">
+                                            <i class="fas fa-user ml-2 text-xs"></i>
+                                            <span class="text-sm">תלמיד</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <button class="bg-accent hover:bg-accent/90 text-accent-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                data-event="click:openOverride">
+                                            <i class="fas fa-edit ml-2"></i>
+                                            עריכה
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-muted/50 transition-colors">
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center ml-3">
+                                                <span class="text-primary-foreground text-sm font-medium">ד</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-foreground">דוד כהן</p>
+                                                <p class="text-sm text-muted-foreground">דדי</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-foreground font-mono">9012</td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge bg-secondary/10 text-secondary">תיכון</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge status-permanent-absence">אישור היעדרות קבוע</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge bg-muted text-muted-foreground">ללא</span>
+                                    </td>
+                                    <td class="py-4 px-6 text-muted-foreground">-</td>
+                                    <td class="py-4 px-6 text-muted-foreground">-</td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center text-muted-foreground">
+                                            <i class="fas fa-robot ml-2 text-xs"></i>
+                                            <span class="text-sm">אוטומטי</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <button class="bg-accent hover:bg-accent/90 text-accent-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                data-event="click:openOverride">
+                                            <i class="fas fa-edit ml-2"></i>
+                                            עריכה
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr class="hover:bg-muted/50 transition-colors">
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center">
+                                            <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center ml-3">
+                                                <span class="text-primary-foreground text-sm font-medium">ר</span>
+                                            </div>
+                                            <div>
+                                                <p class="font-medium text-foreground">רחל אברהם</p>
+                                                <p class="text-sm text-muted-foreground">רחלי</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-foreground font-mono">3456</td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge bg-secondary/10 text-secondary">יסודי</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge status-not-reported">לא דיווח</span>
+                                    </td>
+                                    <td class="py-4 px-6">
+                                        <span class="status-badge bg-muted text-muted-foreground">ללא</span>
+                                    </td>
+                                    <td class="py-4 px-6 text-muted-foreground">-</td>
+                                    <td class="py-4 px-6 text-muted-foreground">-</td>
+                                    <td class="py-4 px-6">
+                                        <div class="flex items-center text-muted-foreground">
+                                            <span class="text-sm">-</span>
+                                        </div>
+                                    </td>
+                                    <td class="py-4 px-6 text-center">
+                                        <button class="bg-accent hover:bg-accent/90 text-accent-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                data-event="click:openOverride">
+                                            <i class="fas fa-edit ml-2"></i>
+                                            עריכה
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- @END_MAP )) -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Monthly Summary Section (Manager View) -->
+                <div class="manager-only grid lg:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                        <h3 class="text-lg font-semibold text-foreground mb-4">
+                            <i class="fas fa-chart-bar text-primary ml-2"></i>
+                            סיכום חודשי - נובמבר 2024
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted-foreground">ממוצע נוכחות</span>
+                                <span class="font-semibold text-success">89%</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted-foreground">סה״כ איחורים</span>
+                                <span class="font-semibold text-warning">23</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted-foreground">״לא בא לי״ חודשי</span>
+                                <span class="font-semibold text-destructive">8</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-muted-foreground">תביעות פתוחות</span>
+                                <span class="font-semibold text-destructive">2</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                        <h3 class="text-lg font-semibold text-foreground mb-4">
+                            <i class="fas fa-exclamation-triangle text-warning ml-2"></i>
+                            תביעות פתוחות
+                        </h3>
+                        <div class="space-y-3">
+                            <!-- @MAP: openClaims.map(claim => ( -->
+                            <div class="flex items-center justify-between p-3 bg-destructive/5 rounded-md border border-destructive/20">
+                                <div>
+                                    <p class="font-medium text-foreground" data-bind="claim.studentName">יוסף ישראלי</p>
+                                    <p class="text-sm text-muted-foreground" data-bind="claim.reason">חריגת סף איחורים</p>
+                                </div>
+                                <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                        data-event="click:viewClaim"
+                                        data-implementation="Should open claim details modal">
+                                    <i class="fas fa-eye ml-1"></i>
+                                    צפה
+                                </button>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-destructive/5 rounded-md border border-destructive/20">
+                                <div>
+                                    <p class="font-medium text-foreground">מרים לוי</p>
+                                    <p class="text-sm text-muted-foreground">״לא בא לי״ שלישי</p>
+                                </div>
+                                <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                        data-event="click:viewClaim">
+                                    <i class="fas fa-eye ml-1"></i>
+                                    צפה
+                                </button>
+                            </div>
+                            <!-- @END_MAP )) -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: ManagerInterface -->
+
+        <!-- @COMPONENT: AdminInterface -->
+        <div id="admin-interface" class="admin-view hidden">
+            <div class="max-w-7xl mx-auto p-6">
+                <!-- Admin Navigation -->
+                <div class="mb-8">
+                    <h2 class="text-3xl font-bold text-foreground mb-6">ניהול מערכת</h2>
+                    
+                    <div class="bg-card rounded-lg shadow-sm border border-border p-2">
+                        <div class="flex flex-wrap gap-2">
+                            <button id="students-tab" class="admin-tab-btn bg-primary text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                                <i class="fas fa-users ml-2"></i>
+                                ניהול תלמידים
+                            </button>
+                            <button id="absences-tab" class="admin-tab-btn text-muted-foreground hover:text-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                                <i class="fas fa-calendar-times ml-2"></i>
+                                היעדרויות קבועות
+                            </button>
+                            <button id="holidays-tab" class="admin-tab-btn text-muted-foreground hover:text-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                                <i class="fas fa-umbrella-beach ml-2"></i>
+                                חגים וחופשות
+                            </button>
+                            <button id="settings-tab" class="admin-tab-btn text-muted-foreground hover:text-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                                <i class="fas fa-cog ml-2"></i>
+                                הגדרות כלליות
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Students Management Tab -->
+                <div id="students-content" class="admin-content">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                        <h3 class="text-xl font-semibold text-foreground">רשימת תלמידים</h3>
+                        <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium mt-4 lg:mt-0 transition-colors"
+                                data-event="click:addStudent"
+                                data-implementation="Should open add student modal">
+                            <i class="fas fa-plus ml-2"></i>
+                            הוסף תלמיד חדש
+                        </button>
+                    </div>
+
+                    <!-- Student Search and Filters -->
+                    <div class="bg-card rounded-lg shadow-sm p-6 mb-6 border border-border">
+                        <div class="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-reverse lg:space-x-6">
+                            <div class="flex-1">
+                                <input type="text" 
+                                       class="w-full px-4 py-2 border border-border rounded-md bg-background text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                       placeholder="חפש תלמיד לפי שם, כינוי או מספר..."
+                                       data-implementation="Filter students table">
+                            </div>
+                            <select class="lg:w-48 px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                    data-implementation="Filter by school level">
+                                <option value="">כל הרמות</option>
+                                <option value="יסודי">יסודי</option>
+                                <option value="תיכון">תיכון</option>
+                            </select>
+                            <select class="lg:w-48 px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                    data-implementation="Filter by activity status">
+                                <option value="">כל הסטטוסים</option>
+                                <option value="פעיל">פעיל</option>
+                                <option value="לא פעיל">לא פעיל</option>
+                                <option value="מושעה">מושעה</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Students Table -->
+                    <div class="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
+                        <div class="table-container">
+                            <table class="w-full">
+                                <thead class="bg-muted">
+                                    <tr>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">שם מלא</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">כינוי</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">מספר תלמיד</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">רמה</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">סטטוס פעילות</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">טלפון</th>
+                                        <th class="text-center py-4 px-6 text-sm font-semibold text-foreground">פעולות</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-border">
+                                    <!-- @MAP: students.map(student => ( -->
+                                    <tr class="hover:bg-muted/50 transition-colors">
+                                        <td class="py-4 px-6">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center ml-3">
+                                                    <span class="text-primary-foreground text-sm font-medium" data-bind="student.initials">י</span>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium text-foreground" data-bind="student.fullName">יוסף ישראלי</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-6 text-foreground" data-bind="student.nickname">יוסיק</td>
+                                        <td class="py-4 px-6 text-foreground font-mono" data-bind="student.student_number">1234</td>
+                                        <td class="py-4 px-6">
+                                            <span class="status-badge bg-secondary/10 text-secondary" data-bind="student.school_level">תיכון</span>
+                                        </td>
+                                        <td class="py-4 px-6">
+                                            <span class="status-badge status-present" data-bind="student.activity_status">פעיל</span>
+                                        </td>
+                                        <td class="py-4 px-6 text-muted-foreground font-mono" data-bind="student.phone_number">050-1234567</td>
+                                        <td class="py-4 px-6">
+                                            <div class="flex items-center justify-center space-x-reverse space-x-2">
+                                                <button class="bg-accent hover:bg-accent/90 text-accent-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                        data-event="click:editStudent"
+                                                        data-implementation="Should open edit student modal">
+                                                    <i class="fas fa-edit ml-1"></i>
+                                                    ערוך
+                                                </button>
+                                                <button class="bg-destructive hover:bg-destructive/90 text-destructive-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                        data-event="click:deleteStudent"
+                                                        data-implementation="Should show confirmation dialog">
+                                                    <i class="fas fa-trash ml-1"></i>
+                                                    מחק
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <!-- @END_MAP )) -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Permanent Absences Tab -->
+                <div id="absences-content" class="admin-content hidden">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                        <h3 class="text-xl font-semibold text-foreground">אישורי היעדרות קבועים</h3>
+                        <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium mt-4 lg:mt-0 transition-colors"
+                                data-event="click:addAbsence"
+                                data-implementation="Should open add permanent absence modal">
+                            <i class="fas fa-plus ml-2"></i>
+                            הוסף היעדרות קבועה
+                        </button>
+                    </div>
+
+                    <div class="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
+                        <div class="table-container">
+                            <table class="w-full">
+                                <thead class="bg-muted">
+                                    <tr>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">תלמיד</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">יום בשבוע</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">סיבה</th>
+                                        <th class="text-center py-4 px-6 text-sm font-semibold text-foreground">פעולות</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-border">
+                                    <tr class="hover:bg-muted/50 transition-colors">
+                                        <td class="py-4 px-6">
+                                            <div class="flex items-center">
+                                                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center ml-3">
+                                                    <span class="text-primary-foreground text-sm font-medium">ד</span>
+                                                </div>
+                                                <span class="font-medium text-foreground">דוד כהן</span>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-6 text-foreground">רביעי</td>
+                                        <td class="py-4 px-6 text-foreground">טיפול רפואי</td>
+                                        <td class="py-4 px-6">
+                                            <div class="flex items-center justify-center space-x-reverse space-x-2">
+                                                <button class="bg-accent hover:bg-accent/90 text-accent-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                        data-event="click:editAbsence">
+                                                    <i class="fas fa-edit ml-1"></i>
+                                                    ערוך
+                                                </button>
+                                                <button class="bg-destructive hover:bg-destructive/90 text-destructive-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                        data-event="click:deleteAbsence">
+                                                    <i class="fas fa-trash ml-1"></i>
+                                                    מחק
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Holidays Tab -->
+                <div id="holidays-content" class="admin-content hidden">
+                    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-6">
+                        <h3 class="text-xl font-semibold text-foreground">חגים וחופשות</h3>
+                        <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium mt-4 lg:mt-0 transition-colors"
+                                data-event="click:addHoliday"
+                                data-implementation="Should open add holiday modal">
+                            <i class="fas fa-plus ml-2"></i>
+                            הוסף חג/חופשה
+                        </button>
+                    </div>
+
+                    <div class="bg-card rounded-lg shadow-sm border border-border overflow-hidden">
+                        <div class="table-container">
+                            <table class="w-full">
+                                <thead class="bg-muted">
+                                    <tr>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">תאריך</th>
+                                        <th class="text-right py-4 px-6 text-sm font-semibold text-foreground">תיאור</th>
+                                        <th class="text-center py-4 px-6 text-sm font-semibold text-foreground">פעולות</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-border">
+                                    <tr class="hover:bg-muted/50 transition-colors">
+                                        <td class="py-4 px-6 text-foreground font-mono">25.12.2024</td>
+                                        <td class="py-4 px-6 text-foreground">חג המולד</td>
+                                        <td class="py-4 px-6">
+                                            <div class="flex items-center justify-center space-x-reverse space-x-2">
+                                                <button class="bg-accent hover:bg-accent/90 text-accent-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                        data-event="click:editHoliday">
+                                                    <i class="fas fa-edit ml-1"></i>
+                                                    ערוך
+                                                </button>
+                                                <button class="bg-destructive hover:bg-destructive/90 text-destructive-foreground px-3 py-1 rounded-md text-sm font-medium transition-colors"
+                                                        data-event="click:deleteHoliday">
+                                                    <i class="fas fa-trash ml-1"></i>
+                                                    מחק
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Tab -->
+                <div id="settings-content" class="admin-content hidden">
+                    <h3 class="text-xl font-semibold text-foreground mb-6">הגדרות כלליות</h3>
+                    
+                    <div class="grid lg:grid-cols-2 gap-6">
+                        <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                            <h4 class="text-lg font-semibold text-foreground mb-4">ברירות מחדל</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-foreground mb-2">מספר איחורים מותר לחודש</label>
+                                    <input type="number" 
+                                           class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                           value="3"
+                                           data-bind="settings.lateness_threshold_per_month_default"
+                                           data-implementation="Should save to settings table">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-foreground mb-2">מספר ״לא בא לי״ מותר לחודש</label>
+                                    <input type="number" 
+                                           class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                           value="2"
+                                           data-bind="settings.max_yom_lo_ba_li_per_month_default"
+                                           data-implementation="Should save to settings table">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-card rounded-lg shadow-sm p-6 border border-border">
+                            <h4 class="text-lg font-semibold text-foreground mb-4">פרטי יו״ר בית המשפט</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-foreground mb-2">שם יו״ר</label>
+                                    <input type="text" 
+                                           class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                           value="ד״ר משה לוי"
+                                           data-bind="settings.court_chair_name"
+                                           data-implementation="Should save to settings table">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-foreground mb-2">טלפון יו״ר</label>
+                                    <input type="tel" 
+                                           class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                           value="050-9876543"
+                                           data-bind="settings.court_chair_phone"
+                                           data-implementation="Should save to settings table">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 flex justify-end">
+                        <button class="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-md text-sm font-medium transition-colors"
+                                data-event="click:saveSettings"
+                                data-implementation="Should save all settings changes">
+                            <i class="fas fa-save ml-2"></i>
+                            שמור הגדרות
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: AdminInterface -->
+
+        <!-- @COMPONENT: OverrideModal -->
+        <div id="override-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden" data-implementation="Modal overlay for attendance overrides">
+            <div class="bg-card rounded-lg shadow-xl w-full max-w-md mx-4 p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-semibold text-foreground">עריכת נוכחות - יוסף ישראלי</h3>
+                    <button class="text-muted-foreground hover:text-foreground"
+                            data-event="click:closeModal"
+                            data-implementation="Should close modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <form class="space-y-4" data-implementation="Should handle form submission and validation">
+                    <div>
+                        <label class="block text-sm font-medium text-foreground mb-2">סטטוס</label>
+                        <select class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                data-bind="attendanceRecord.status">
+                            <option value="לא דיווח">לא דיווח</option>
+                            <option value="נוכח" selected>נוכח</option>
+                            <option value="יצא">יצא</option>
+                            <option value="יום לא בא לי">יום לא בא לי</option>
+                            <option value="חיסור מאושר">חיסור מאושר</option>
+                            <option value="אישור היעדרות קבוע">אישור היעדרות קבוע</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-foreground mb-2">תת-סטטוס</label>
+                        <select class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                data-bind="attendanceRecord.sub_status">
+                            <option value="ללא">ללא</option>
+                            <option value="איחור" selected>איחור</option>
+                            <option value="נסגר אוטומטית">נסגר אוטומטית</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">שעת כניסה</label>
+                            <input type="time" 
+                                   class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                   value="08:45"
+                                   data-bind="attendanceRecord.check_in_time">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">שעת יציאה</label>
+                            <input type="time" 
+                                   class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                   data-bind="attendanceRecord.check_out_time">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-foreground mb-2">דיווח על ידי</label>
+                        <select class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                data-bind="attendanceRecord.reported_by">
+                            <option value="student">תלמיד</option>
+                            <option value="manager" selected>מנהל</option>
+                            <option value="auto">אוטומטי</option>
+                        </select>
+                    </div>
+
+                    <div class="flex items-center space-x-reverse space-x-3 p-4 bg-warning/10 rounded-md border border-warning/20">
+                        <input type="checkbox" 
+                               id="override-lock"
+                               class="rounded border-border text-primary focus:ring-primary"
+                               data-bind="attendanceRecord.override_locked"
+                               data-implementation="Should lock record from future automation">
+                        <label for="override-lock" class="text-sm font-medium text-warning">
+                            <i class="fas fa-lock ml-2"></i>
+                            נעל רשומה מפני שינויים אוטומטיים
+                        </label>
+                    </div>
+
+                    <div class="flex space-x-reverse space-x-3 pt-4">
+                        <button type="button" 
+                                class="flex-1 bg-muted hover:bg-muted/80 text-muted-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                data-event="click:closeModal">
+                            ביטול
+                        </button>
+                        <button type="submit" 
+                                class="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                data-event="click:saveOverride"
+                                data-implementation="Should save attendance override and log in audit_log">
+                            <i class="fas fa-save ml-2"></i>
+                            שמור שינויים
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: OverrideModal -->
+
+        <!-- @COMPONENT: AddStudentModal -->
+        <div id="add-student-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden" data-implementation="Modal for adding new students">
+            <div class="bg-card rounded-lg shadow-xl w-full max-w-lg mx-4 p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-lg font-semibold text-foreground">הוספת תלמיד חדש</h3>
+                    <button class="text-muted-foreground hover:text-foreground"
+                            data-event="click:closeAddModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <form class="space-y-4" data-implementation="Should handle student creation with validation">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">שם פרטי</label>
+                            <input type="text" 
+                                   class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                   required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">שם משפחה</label>
+                            <input type="text" 
+                                   class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">כינוי</label>
+                            <input type="text" 
+                                   class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                   required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">מספר תלמיד</label>
+                            <input type="text" 
+                                   class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                                   required>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">רמת בית ספר</label>
+                            <select class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                <option value="">בחר רמה</option>
+                                <option value="יסודי">יסודי</option>
+                                <option value="תיכון">תיכון</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-foreground mb-2">סטטוס פעילות</label>
+                            <select class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary" required>
+                                <option value="פעיל" selected>פעיל</option>
+                                <option value="לא פעיל">לא פעיל</option>
+                                <option value="מושעה">מושעה</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-foreground mb-2">מספר טלפון</label>
+                        <input type="tel" 
+                               class="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
+                               placeholder="050-1234567">
+                    </div>
+
+                    <div class="flex space-x-reverse space-x-3 pt-4">
+                        <button type="button" 
+                                class="flex-1 bg-muted hover:bg-muted/80 text-muted-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                data-event="click:closeAddModal">
+                            ביטול
+                        </button>
+                        <button type="submit" 
+                                class="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                                data-event="click:saveStudent"
+                                data-implementation="Should create new student record">
+                            <i class="fas fa-save ml-2"></i>
+                            הוסף תלמיד
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- @END_COMPONENT: AddStudentModal -->
+
+        <!-- Mobile Menu for Mode Selection -->
+        <div class="md:hidden fixed bottom-4 left-4 right-4 z-40">
+            <div class="bg-card rounded-lg shadow-lg border border-border p-2">
+                <div class="flex space-x-reverse space-x-1">
+                    <button class="mobile-mode-btn flex-1 bg-primary text-primary-foreground py-3 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-tablet-alt block text-lg mb-1"></i>
+                        קיוסק
+                    </button>
+                    <button class="mobile-mode-btn flex-1 text-muted-foreground hover:text-foreground py-3 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-chart-line block text-lg mb-1"></i>
+                        נוכחות
+                    </button>
+                    <button class="mobile-mode-btn flex-1 text-muted-foreground hover:text-foreground py-3 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-cog block text-lg mb-1"></i>
+                        ניהול
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Overlay -->
+        <div id="loading-overlay" class="fixed inset-0 bg-black/30 flex items-center justify-center z-60 hidden">
+            <div class="bg-card rounded-lg shadow-xl p-6">
+                <div class="flex items-center space-x-reverse space-x-3">
+                    <div class="animate-spin rounded-full h-6 w-6 border-2 border-primary border-b-transparent"></div>
+                    <span class="text-foreground font-medium">טוען...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- @END_COMPONENT: AppLayout -->
+
+    <script>
+        // TODO: Implement actual business logic, API calls, and state management
+        
+        (function() {
+            // Interface Mode Management
+            const kioskInterface = document.getElementById('kiosk-interface');
+            const managerInterface = document.getElementById('manager-interface');
+            const adminInterface = document.getElementById('admin-interface');
+            
+            const kioskMode = document.getElementById('kiosk-mode');
+            const managerMode = document.getElementById('manager-mode');
+            const adminMode = document.getElementById('admin-mode');
+            
+            // Mobile mode buttons
+            const mobileModeBtns = document.querySelectorAll('.mobile-mode-btn');
+
+            function showInterface(interfaceType) {
+                // Hide all interfaces
+                kioskInterface.classList.add('hidden');
+                managerInterface.classList.add('hidden');
+                adminInterface.classList.add('hidden');
+                
+                // Remove active styles from all mode buttons
+                document.querySelectorAll('[id$="-mode"]').forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-primary-foreground');
+                    btn.classList.add('text-muted-foreground', 'hover:text-foreground');
+                });
+                
+                mobileModeBtns.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-primary-foreground');
+                    btn.classList.add('text-muted-foreground', 'hover:text-foreground');
+                });
+
+                // Show selected interface and update buttons
+                if (interfaceType === 'kiosk') {
+                    kioskInterface.classList.remove('hidden');
+                    kioskMode?.classList.add('bg-primary', 'text-primary-foreground');
+                    kioskMode?.classList.remove('text-muted-foreground', 'hover:text-foreground');
+                    mobileModeBtns[0]?.classList.add('bg-primary', 'text-primary-foreground');
+                    mobileModeBtns[0]?.classList.remove('text-muted-foreground', 'hover:text-foreground');
+                } else if (interfaceType === 'manager') {
+                    managerInterface.classList.remove('hidden');
+                    managerMode?.classList.add('bg-primary', 'text-primary-foreground');
+                    managerMode?.classList.remove('text-muted-foreground', 'hover:text-foreground');
+                    mobileModeBtns[1]?.classList.add('bg-primary', 'text-primary-foreground');
+                    mobileModeBtns[1]?.classList.remove('text-muted-foreground', 'hover:text-foreground');
+                } else if (interfaceType === 'admin') {
+                    adminInterface.classList.remove('hidden');
+                    adminMode?.classList.add('bg-primary', 'text-primary-foreground');
+                    adminMode?.classList.remove('text-muted-foreground', 'hover:text-foreground');
+                    mobileModeBtns[2]?.classList.add('bg-primary', 'text-primary-foreground');
+                    mobileModeBtns[2]?.classList.remove('text-muted-foreground', 'hover:text-foreground');
+                }
+            }
+
+            // Mode switching event listeners
+            kioskMode?.addEventListener('click', () => showInterface('kiosk'));
+            managerMode?.addEventListener('click', () => showInterface('manager'));
+            adminMode?.addEventListener('click', () => showInterface('admin'));
+            
+            mobileModeBtns[0]?.addEventListener('click', () => showInterface('kiosk'));
+            mobileModeBtns[1]?.addEventListener('click', () => showInterface('manager'));
+            mobileModeBtns[2]?.addEventListener('click', () => showInterface('admin'));
+
+            // Admin Tab Management
+            const adminTabBtns = document.querySelectorAll('.admin-tab-btn');
+            const adminContents = document.querySelectorAll('.admin-content');
+
+            function showAdminTab(tabName) {
+                adminContents.forEach(content => content.classList.add('hidden'));
+                adminTabBtns.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-primary-foreground');
+                    btn.classList.add('text-muted-foreground', 'hover:text-foreground');
+                });
+
+                document.getElementById(`${tabName}-content`)?.classList.remove('hidden');
+                document.getElementById(`${tabName}-tab`)?.classList.add('bg-primary', 'text-primary-foreground');
+                document.getElementById(`${tabName}-tab`)?.classList.remove('text-muted-foreground', 'hover:text-foreground');
+            }
+
+            document.getElementById('students-tab')?.addEventListener('click', () => showAdminTab('students'));
+            document.getElementById('absences-tab')?.addEventListener('click', () => showAdminTab('absences'));
+            document.getElementById('holidays-tab')?.addEventListener('click', () => showAdminTab('holidays'));
+            document.getElementById('settings-tab')?.addEventListener('click', () => showAdminTab('settings'));
+
+            // Modal Management
+            const overrideModal = document.getElementById('override-modal');
+            const addStudentModal = document.getElementById('add-student-modal');
+
+            function showModal(modal) {
+                modal?.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function hideModal(modal) {
+                modal?.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Modal event listeners
+            document.querySelectorAll('[data-event="click:openOverride"]').forEach(btn => {
+                btn.addEventListener('click', () => showModal(overrideModal));
+            });
+
+            document.querySelectorAll('[data-event="click:closeModal"]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    hideModal(overrideModal);
+                    hideModal(addStudentModal);
+                });
+            });
+
+            document.querySelectorAll('[data-event="click:addStudent"]').forEach(btn => {
+                btn.addEventListener('click', () => showModal(addStudentModal));
+            });
+
+            document.querySelectorAll('[data-event="click:closeAddModal"]').forEach(btn => {
+                btn.addEventListener('click', () => hideModal(addStudentModal));
+            });
+
+            // Kiosk search simulation
+            const studentSearch = document.getElementById('student-search');
+            const noSearch = document.getElementById('no-search');
+            const studentResults = document.getElementById('student-results');
+            const noResults = document.getElementById('no-results');
+
+            studentSearch?.addEventListener('input', function(e) {
+                const query = e.target.value.trim();
+                
+                if (query === '') {
+                    noSearch?.classList.remove('hidden');
+                    studentResults?.classList.add('hidden');
+                    noResults?.classList.add('hidden');
+                } else if (query.length >= 2) {
+                    noSearch?.classList.add('hidden');
+                    if (query.toLowerCase().includes('יוסף') || query === '1234' || query.toLowerCase().includes('יוסיק')) {
+                        studentResults?.classList.remove('hidden');
+                        noResults?.classList.add('hidden');
+                    } else {
+                        studentResults?.classList.add('hidden');
+                        noResults?.classList.remove('hidden');
+                    }
+                }
+            });
+
+            // Close modals when clicking outside
+            [overrideModal, addStudentModal].forEach(modal => {
+                modal?.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        hideModal(modal);
+                    }
+                });
+            });
+
+            // Initialize with kiosk interface
+            showInterface('kiosk');
+        })();
+    </script>
+</body>
+</html>
