@@ -1,0 +1,142 @@
+# Default values for presence-system
+replicaCount: 1
+
+image:
+  repository: presence
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: presence.local
+      paths:
+        - path: /
+          pathType: Prefix
+          service: kiosk
+        - path: /manager
+          pathType: Prefix
+          service: manager
+        - path: /admin
+          pathType: Prefix
+          service: admin
+        - path: /api
+          pathType: Prefix
+          service: backend
+  tls: []
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# Backend configuration
+backend:
+  replicaCount: 1
+  image:
+    repository: presence/backend
+    tag: latest
+  service:
+    port: 8000
+  env:
+    SECRET_KEY: "your-secret-key-here"
+    WHATSAPP_API_URL: "https://api.whatsapp.com"
+    WHATSAPP_API_TOKEN: "your-whatsapp-token"
+
+# Frontend configurations
+kiosk:
+  replicaCount: 1
+  image:
+    repository: presence/kiosk
+    tag: latest
+  service:
+    port: 80
+
+manager:
+  replicaCount: 1
+  image:
+    repository: presence/manager
+    tag: latest
+  service:
+    port: 80
+
+admin:
+  replicaCount: 1
+  image:
+    repository: presence/admin
+    tag: latest
+  service:
+    port: 80
+
+# Celery workers
+celery:
+  worker:
+    replicaCount: 2
+    image:
+      repository: presence/backend
+      tag: latest
+  beat:
+    replicaCount: 1
+    image:
+      repository: presence/backend
+      tag: latest
+
+# PostgreSQL configuration
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "postgres_password"
+    username: "presence_user"
+    password: "presence_password"
+    database: "presence"
+  primary:
+    persistence:
+      enabled: true
+      size: 8Gi
+
+# Redis configuration
+redis:
+  enabled: true
+  auth:
+    enabled: false
+  master:
+    persistence:
+      enabled: true
+      size: 8Gi

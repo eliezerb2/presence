@@ -1,0 +1,78 @@
+# Celery Worker Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "presence-system.fullname" . }}-celery-worker
+  labels:
+    {{- include "presence-system.labels" . | nindent 4 }}
+    app.kubernetes.io/component: celery-worker
+spec:
+  replicas: {{ .Values.celery.worker.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "presence-system.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: celery-worker
+  template:
+    metadata:
+      labels:
+        {{- include "presence-system.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: celery-worker
+    spec:
+      containers:
+        - name: celery-worker
+          image: "{{ .Values.celery.worker.image.repository }}:{{ .Values.celery.worker.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["celery", "-A", "app.services.scheduler", "worker", "--loglevel=info"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ include "presence-system.fullname" . }}-postgresql:5432/{{ .Values.postgresql.auth.database }}"
+            - name: REDIS_URL
+              value: "redis://{{ include "presence-system.fullname" . }}-redis-master:6379"
+            - name: SECRET_KEY
+              value: {{ .Values.backend.env.SECRET_KEY | quote }}
+            - name: WHATSAPP_API_URL
+              value: {{ .Values.backend.env.WHATSAPP_API_URL | quote }}
+            - name: WHATSAPP_API_TOKEN
+              value: {{ .Values.backend.env.WHATSAPP_API_TOKEN | quote }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+
+---
+# Celery Beat Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "presence-system.fullname" . }}-celery-beat
+  labels:
+    {{- include "presence-system.labels" . | nindent 4 }}
+    app.kubernetes.io/component: celery-beat
+spec:
+  replicas: {{ .Values.celery.beat.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "presence-system.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: celery-beat
+  template:
+    metadata:
+      labels:
+        {{- include "presence-system.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: celery-beat
+    spec:
+      containers:
+        - name: celery-beat
+          image: "{{ .Values.celery.beat.image.repository }}:{{ .Values.celery.beat.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command: ["celery", "-A", "app.services.scheduler", "beat", "--loglevel=info"]
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://{{ .Values.postgresql.auth.username }}:{{ .Values.postgresql.auth.password }}@{{ include "presence-system.fullname" . }}-postgresql:5432/{{ .Values.postgresql.auth.database }}"
+            - name: REDIS_URL
+              value: "redis://{{ include "presence-system.fullname" . }}-redis-master:6379"
+            - name: SECRET_KEY
+              value: {{ .Values.backend.env.SECRET_KEY | quote }}
+            - name: WHATSAPP_API_URL
+              value: {{ .Values.backend.env.WHATSAPP_API_URL | quote }}
+            - name: WHATSAPP_API_TOKEN
+              value: {{ .Values.backend.env.WHATSAPP_API_TOKEN | quote }}
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}

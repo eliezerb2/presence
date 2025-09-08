@@ -1,0 +1,13 @@
+# Testing dependencies
+pytest==7.4.0
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-mock==3.11.1
+httpx==0.24.1
+requests-mock==1.11.0
+
+# Test database
+sqlite3
+
+# Coverage reporting
+coverage==7.2.7
