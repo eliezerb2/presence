@@ -1,0 +1,88 @@
+@startuml AttendanceSystem_IBD
+title School Attendance System - Internal Block Diagram
+
+rectangle "Attendance System" {
+    
+    rectangle "Frontend Layer" {
+        component [Kiosk Tablet] as kiosk
+        component [Manager Web App] as manager
+        component [Admin Panel] as admin
+    }
+    
+    rectangle "API Gateway" as gateway
+    
+    rectangle "Application Layer" {
+        component [Attendance API] as attendanceAPI
+        component [Student API] as studentAPI
+        component [Reports API] as reportsAPI
+        component [Admin API] as adminAPI
+    }
+    
+    rectangle "Business Logic Layer" {
+        component [Attendance Service] as attendanceSvc
+        component [Automation Service] as automationSvc
+        component [Notification Service] as notificationSvc
+        component [Claims Service] as claimsSvc
+        component [Report Service] as reportSvc
+    }
+    
+    rectangle "Data Access Layer" {
+        component [Database Service] as dbSvc
+        component [Audit Service] as auditSvc
+    }
+    
+    rectangle "External Services" {
+        database "PostgreSQL" as db
+        cloud "WhatsApp API" as whatsapp
+    }
+    
+    rectangle "Infrastructure" {
+        node "Kubernetes Cluster" {
+            component [Frontend Pods] as frontendPods
+            component [Backend Pods] as backendPods
+            component [Database Pod] as dbPod
+            component [Scheduler Pod] as schedulerPod
+        }
+    }
+}
+
+' Interface connections
+kiosk --> gateway : HTTPS
+manager --> gateway : HTTPS
+admin --> gateway : HTTPS
+
+gateway --> attendanceAPI : REST
+gateway --> studentAPI : REST
+gateway --> reportsAPI : REST
+gateway --> adminAPI : REST
+
+attendanceAPI --> attendanceSvc
+studentAPI --> attendanceSvc
+reportsAPI --> reportSvc
+adminAPI --> attendanceSvc
+
+attendanceSvc --> dbSvc
+attendanceSvc --> auditSvc
+automationSvc --> attendanceSvc
+automationSvc --> notificationSvc
+claimsSvc --> attendanceSvc
+claimsSvc --> notificationSvc
+reportSvc --> dbSvc
+
+dbSvc --> db
+auditSvc --> db
+notificationSvc --> whatsapp
+
+' Deployment mapping
+kiosk ..> frontendPods : deployed on
+manager ..> frontendPods : deployed on
+admin ..> frontendPods : deployed on
+attendanceAPI ..> backendPods : deployed on
+studentAPI ..> backendPods : deployed on
+reportsAPI ..> backendPods : deployed on
+adminAPI ..> backendPods : deployed on
+attendanceSvc ..> backendPods : deployed on
+automationSvc ..> schedulerPod : deployed on
+db ..> dbPod : deployed on
+
+@enduml

@@ -1,0 +1,110 @@
+@startuml DataModel_Diagram
+title School Attendance System - Data Model
+
+!define TABLE class
+
+TABLE students {
+    + id : INTEGER (PK)
+    --
+    student_number : VARCHAR(20) UNIQUE
+    nickname : VARCHAR(50) UNIQUE
+    first_name : VARCHAR(100)
+    last_name : VARCHAR(100)
+    phone_number : VARCHAR(20)
+    school_level : ENUM('יסודי', 'תיכון')
+    activity_status : ENUM('פעיל', 'לא פעיל', 'מושעה')
+}
+
+TABLE attendance {
+    + id : INTEGER (PK)
+    --
+    student_id : INTEGER (FK)
+    date : DATE
+    status : ENUM('לא דיווח', 'נוכח', 'יצא', 'יום לא בא לי', 'חיסור מאושר', 'אישור היעדרות קבוע')
+    sub_status : ENUM('ללא', 'איחור', 'נסגר אוטומטית')
+    reported_by : ENUM('student', 'manager', 'auto')
+    check_in_time : TIME
+    check_out_time : TIME
+    closed_reason : ENUM('n/a', 'manual', 'auto_16')
+    override_locked : BOOLEAN DEFAULT false
+    override_locked_at : TIMESTAMP
+    --
+    UNIQUE(student_id, date)
+}
+
+TABLE permanent_absences {
+    + id : INTEGER (PK)
+    --
+    student_id : INTEGER (FK)
+    weekday : ENUM('א', 'ב', 'ג', 'ד', 'ה')
+    reason : TEXT
+    --
+    UNIQUE(student_id, weekday)
+}
+
+TABLE school_holidays {
+    + id : INTEGER (PK)
+    --
+    date : DATE
+    description : VARCHAR(200)
+}
+
+TABLE settings {
+    + id : INTEGER (PK)
+    --
+    lateness_threshold_per_month_default : INTEGER
+    max_yom_lo_ba_li_per_month_default : INTEGER DEFAULT 2
+    court_chair_name : VARCHAR(100)
+    court_chair_phone : VARCHAR(20)
+}
+
+TABLE student_monthly_overrides {
+    + id : INTEGER (PK)
+    --
+    student_id : INTEGER (FK)
+    year_month : VARCHAR(7)
+    lateness_threshold_override : INTEGER
+    max_yom_lo_ba_li_override : INTEGER
+    --
+    UNIQUE(student_id, year_month)
+}
+
+TABLE claims {
+    + id : INTEGER (PK)
+    --
+    student_id : INTEGER (FK)
+    date_opened : DATE
+    reason : ENUM('late_threshold', 'third_yom_lo_ba_li', 'other')
+    notified_to : JSON
+    status : ENUM('open', 'closed')
+}
+
+TABLE audit_log {
+    + id : INTEGER (PK)
+    --
+    actor : ENUM('manager', 'auto', 'student')
+    action : VARCHAR(50)
+    entity : VARCHAR(50)
+    entity_id : INTEGER
+    before : JSON
+    after : JSON
+    timestamp : TIMESTAMP DEFAULT now()
+}
+
+' Relationships
+students ||--o{ attendance : "has"
+students ||--o{ permanent_absences : "has"
+students ||--o{ student_monthly_overrides : "has"
+students ||--o{ claims : "has"
+
+attendance }o--|| students : "belongs to"
+permanent_absences }o--|| students : "belongs to"
+student_monthly_overrides }o--|| students : "belongs to"
+claims }o--|| students : "belongs to"
+
+note top of students : Core entity representing\nschool students
+note top of attendance : Daily attendance records\nwith automation support
+note top of claims : "Court" system for\nthreshold violations
+note bottom of audit_log : Complete audit trail\nfor all system changes
+
+@enduml

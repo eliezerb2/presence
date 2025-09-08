@@ -1,0 +1,112 @@
+@startuml StudentCheckIn_Sequence
+title Student Check-in Process
+
+actor Student
+participant "Kiosk Tablet" as Kiosk
+participant "API Gateway" as Gateway
+participant "Attendance API" as API
+participant "Attendance Service" as Service
+participant "Database Service" as DB
+participant "Audit Service" as Audit
+database "PostgreSQL" as Database
+
+Student -> Kiosk: Search by student_number/nickname/name
+activate Kiosk
+
+Kiosk -> Gateway: GET /api/students/search?q={query}
+activate Gateway
+
+Gateway -> API: Forward search request
+activate API
+
+API -> Service: searchStudents(query)
+activate Service
+
+Service -> DB: findStudentsByQuery(query)
+activate DB
+
+DB -> Database: SELECT * FROM students WHERE...
+activate Database
+Database --> DB: student records
+deactivate Database
+
+DB --> Service: student list
+deactivate DB
+
+Service --> API: filtered students
+deactivate Service
+
+API --> Gateway: JSON response
+deactivate API
+
+Gateway --> Kiosk: student options
+deactivate Gateway
+
+Kiosk --> Student: Display matching students
+deactivate Kiosk
+
+Student -> Kiosk: Select student & click "כניסה"
+activate Kiosk
+
+Kiosk -> Gateway: POST /api/attendance/checkin
+note right: {student_id, action: "checkin"}
+activate Gateway
+
+Gateway -> API: Forward checkin request
+activate API
+
+API -> Service: recordCheckIn(student_id)
+activate Service
+
+Service -> DB: getCurrentAttendance(student_id, today)
+activate DB
+
+DB -> Database: SELECT * FROM attendance WHERE student_id=? AND date=?
+activate Database
+Database --> DB: attendance record or null
+deactivate Database
+
+DB --> Service: current attendance
+deactivate DB
+
+alt No existing record
+    Service -> DB: createAttendance(student_id, "נוכח", "ללא", "student")
+    activate DB
+    DB -> Database: INSERT INTO attendance...
+    activate Database
+    Database --> DB: success
+    deactivate Database
+    DB --> Service: created
+    deactivate DB
+else Existing record with "לא דיווח"
+    Service -> DB: updateAttendance(id, "נוכח", check_in_time)
+    activate DB
+    DB -> Database: UPDATE attendance SET...
+    activate Database
+    Database --> DB: success
+    deactivate Database
+    DB --> Service: updated
+    deactivate DB
+end
+
+Service -> Audit: logAction("student", "checkin", student_id)
+activate Audit
+Audit -> Database: INSERT INTO audit_log...
+activate Database
+Database --> Audit: logged
+deactivate Database
+deactivate Audit
+
+Service --> API: success response
+deactivate Service
+
+API --> Gateway: JSON success
+deactivate API
+
+Gateway --> Kiosk: confirmation
+deactivate Gateway
+
+Kiosk --> Student: Show "נרשמת בהצלחה"
+deactivate Kiosk
+
+@enduml

@@ -1,0 +1,117 @@
+@startuml ManagerOverride_Sequence
+title Manager Override Process
+
+actor "Attendance Manager" as Manager
+participant "Manager Interface" as UI
+participant "API Gateway" as Gateway
+participant "Attendance API" as API
+participant "Attendance Service" as Service
+participant "Database Service" as DB
+participant "Audit Service" as Audit
+database "PostgreSQL" as Database
+
+Manager -> UI: View daily attendance
+activate UI
+
+UI -> Gateway: GET /api/attendance/daily?date={date}
+activate Gateway
+
+Gateway -> API: Forward request
+activate API
+
+API -> Service: getDailyAttendance(date)
+activate Service
+
+Service -> DB: getAttendanceByDate(date)
+activate DB
+
+DB -> Database: SELECT a.*, s.* FROM attendance a JOIN students s...
+activate Database
+Database --> DB: attendance records with student info
+deactivate Database
+
+DB --> Service: attendance list
+deactivate DB
+
+Service --> API: formatted attendance data
+deactivate Service
+
+API --> Gateway: JSON response
+deactivate API
+
+Gateway --> UI: attendance data
+deactivate Gateway
+
+UI --> Manager: Display attendance table
+deactivate UI
+
+Manager -> UI: Click edit on student record
+activate UI
+
+UI --> Manager: Show edit form with current values
+deactivate UI
+
+Manager -> UI: Modify status/sub_status/times and save
+activate UI
+
+UI -> Gateway: PUT /api/attendance/{id}/override
+note right: {status, sub_status, check_in_time,\ncheck_out_time, closed_reason}
+activate Gateway
+
+Gateway -> API: Forward override request
+activate API
+
+API -> Service: overrideAttendance(id, changes, manager_id)
+activate Service
+
+Service -> DB: getAttendanceById(id)
+activate DB
+
+DB -> Database: SELECT * FROM attendance WHERE id=?
+activate Database
+Database --> DB: current record
+deactivate Database
+
+DB --> Service: current attendance
+deactivate DB
+
+alt Record not override_locked
+    Service -> Audit: logAction("manager", "override_update", before, after)
+    activate Audit
+    Audit -> Database: INSERT INTO audit_log...
+    activate Database
+    Database --> Audit: logged
+    deactivate Database
+    deactivate Audit
+    
+    Service -> DB: updateWithOverride(id, changes)
+    activate DB
+    DB -> Database: UPDATE attendance SET status=?, sub_status=?,\noverride_locked=true, override_locked_at=now()...
+    activate Database
+    Database --> DB: success
+    deactivate Database
+    DB --> Service: updated
+    deactivate DB
+    
+    Service --> API: success response
+else Record is override_locked
+    Service --> API: error: "Record is locked"
+end
+
+deactivate Service
+
+API --> Gateway: response
+deactivate API
+
+Gateway --> UI: result
+deactivate Gateway
+
+alt Success
+    UI --> Manager: Show "עודכן בהצלחה"
+else Error
+    UI --> Manager: Show error message
+end
+
+deactivate UI
+
+@enduml

@@ -1,0 +1,44 @@
+@startuml DailyAutomation_Activity
+title Daily Attendance Automation Process
+
+start
+
+:Check if school day active;
+note right: Skip weekends, holidays,\nand after school year end
+
+if (School day active?) then (yes)
+    
+    :Process permanent absences\n(Morning);
+    note right: Set status to "אישור היעדרות קבוע"\nfor students with permanent_absences
+    
+    :09:30 - Send WhatsApp reminders;
+    note right: Only to active students\nwith "לא דיווח" status\nwithout permanent absences
+    
+    :10:00-10:30 - Auto mark lateness;
+    note right: Students still "לא דיווח"\nget "נוכח" + "איחור"
+    
+    :10:30+ - Auto mark absent;
+    note right: Students still "לא דיווח"\nget "יום לא בא לי"
+    
+    :16:00 - Auto close day;
+    note right: Students without check_out_time\nget "יצא" + "נסגר אוטומטית"
+    
+    :Calculate monthly statistics;
+    note right: Count lateness and\n"יום לא בא לי" per student
+    
+    :Check thresholds;
+    if (Lateness > threshold OR\nAbsent days >= limit?) then (yes)
+        :Create claim;
+        :Send notifications to\nmanager, student, court chair;
+    else (no)
+    endif
+    
+else (no)
+    :Skip all automations;
+endif
+
+:Log all actions to audit;
+
+stop
+
+@enduml

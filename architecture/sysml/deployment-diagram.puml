@@ -1,0 +1,96 @@
+@startuml Deployment_Diagram
+title School Attendance System - Deployment Architecture
+
+!define RECTANGLE node
+
+cloud "Internet" {
+    interface "WhatsApp API" as whatsapp_api
+}
+
+RECTANGLE "School Network" {
+    
+    RECTANGLE "Entrance Tablet" {
+        component [Kiosk App] as kiosk_app
+        note bottom: Touch interface\nNo authentication required
+    }
+    
+    RECTANGLE "Manager Devices" {
+        component [Web Browser] as manager_browser
+        component [Mobile App] as manager_mobile
+        note bottom: Responsive web interface\nAuthentication required
+    }
+    
+    RECTANGLE "Rancher Desktop Kubernetes" as k8s {
+        
+        package "attendance-system namespace" {
+            
+            RECTANGLE "Frontend Pods" {
+                component [React App] as react_app
+                component [Nginx] as nginx
+                note bottom: Serves static files\nAPI proxy
+            }
+            
+            RECTANGLE "Backend Pods" {
+                component [Python FastAPI] as fastapi
+                component [Attendance Service] as attendance_svc
+                component [Student Service] as student_svc
+                component [Reports Service] as reports_svc
+                note bottom: REST APIs\nBusiness logic
+            }
+            
+            RECTANGLE "Scheduler Pod" {
+                component [Automation Service] as automation_svc
+                component [Cron Jobs] as cron_jobs
+                note bottom: Daily automations\nNotifications\nClaims processing
+            }
+            
+            RECTANGLE "Database Pod" {
+                database [PostgreSQL] as postgres
+                note bottom: Primary data store\nAudit logs
+            }
+            
+            RECTANGLE "Services" {
+                interface "LoadBalancer" as lb
+                interface "ClusterIP" as cluster_ip
+            }
+        }
+        
+        package "monitoring namespace" {
+            component [Prometheus] as prometheus
+            component [Grafana] as grafana
+        }
+    }
+}
+
+' Network connections
+kiosk_app --> lb : HTTPS
+manager_browser --> lb : HTTPS
+manager_mobile --> lb : HTTPS
+
+lb --> nginx
+nginx --> react_app
+nginx --> fastapi : /api/*
+
+fastapi --> attendance_svc
+fastapi --> student_svc  
+fastapi --> reports_svc
+
+attendance_svc --> postgres
+student_svc --> postgres
+reports_svc --> postgres
+automation_svc --> postgres
+
+automation_svc --> whatsapp_api : HTTPS
+
+' Monitoring
+prometheus --> fastapi : metrics
+prometheus --> postgres : metrics
+grafana --> prometheus
+
+' Helm deployment
+note top of k8s : Deployed via Helm Chart\nNamespace: attendance-system\nIngress: Traefik/Nginx
+
+' Storage
+postgres : Persistent Volume\n20GB SSD
+
+@enduml

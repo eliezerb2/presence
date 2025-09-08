@@ -1,0 +1,149 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Data Model Diagram" id="data-model">
+    <mxGraphModel dx="1422" dy="794" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Title -->
+        <mxCell id="title" value="School Attendance System - Data Model" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        
+        <!-- Students Table -->
+        <mxCell id="students" value="students" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="200" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="students-fields" value="+ id : INTEGER (PK)&#xa;student_number : VARCHAR(20) UNIQUE&#xa;nickname : VARCHAR(50) UNIQUE&#xa;first_name : VARCHAR(100)&#xa;last_name : VARCHAR(100)&#xa;phone_number : VARCHAR(20)&#xa;school_level : ENUM&#xa;activity_status : ENUM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="students">
+          <mxGeometry y="26" width="200" height="154" as="geometry" />
+        </mxCell>
+        
+        <!-- Attendance Table -->
+        <mxCell id="attendance" value="attendance" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="360" y="80" width="220" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="attendance-fields" value="+ id : INTEGER (PK)&#xa;student_id : INTEGER (FK)&#xa;date : DATE&#xa;status : ENUM&#xa;sub_status : ENUM&#xa;reported_by : ENUM&#xa;check_in_time : TIME&#xa;check_out_time : TIME&#xa;closed_reason : ENUM&#xa;override_locked : BOOLEAN&#xa;override_locked_at : TIMESTAMP&#xa;&#xa;UNIQUE(student_id, date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="attendance">
+          <mxGeometry y="26" width="220" height="194" as="geometry" />
+        </mxCell>
+        
+        <!-- Permanent Absences Table -->
+        <mxCell id="permanent-absences" value="permanent_absences" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="80" y="300" width="200" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="permanent-absences-fields" value="+ id : INTEGER (PK)&#xa;student_id : INTEGER (FK)&#xa;weekday : ENUM&#xa;reason : TEXT&#xa;&#xa;UNIQUE(student_id, weekday)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="permanent-absences">
+          <mxGeometry y="26" width="200" height="74" as="geometry" />
+        </mxCell>
+        
+        <!-- School Holidays Table -->
+        <mxCell id="school-holidays" value="school_holidays" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="640" y="80" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="school-holidays-fields" value="+ id : INTEGER (PK)&#xa;date : DATE&#xa;description : VARCHAR(200)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="school-holidays">
+          <mxGeometry y="26" width="160" height="54" as="geometry" />
+        </mxCell>
+        
+        <!-- Settings Table -->
+        <mxCell id="settings" value="settings" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="640" y="200" width="240" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="settings-fields" value="+ id : INTEGER (PK)&#xa;lateness_threshold_per_month_default : INT&#xa;max_yom_lo_ba_li_per_month_default : INT&#xa;court_chair_name : VARCHAR(100)&#xa;court_chair_phone : VARCHAR(20)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="settings">
+          <mxGeometry y="26" width="240" height="94" as="geometry" />
+        </mxCell>
+        
+        <!-- Student Monthly Overrides Table -->
+        <mxCell id="monthly-overrides" value="student_monthly_overrides" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="360" y="340" width="220" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="monthly-overrides-fields" value="+ id : INTEGER (PK)&#xa;student_id : INTEGER (FK)&#xa;year_month : VARCHAR(7)&#xa;lateness_threshold_override : INT&#xa;max_yom_lo_ba_li_override : INT&#xa;&#xa;UNIQUE(student_id, year_month)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="monthly-overrides">
+          <mxGeometry y="26" width="220" height="94" as="geometry" />
+        </mxCell>
+        
+        <!-- Claims Table -->
+        <mxCell id="claims" value="claims" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="80" y="440" width="200" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="claims-fields" value="+ id : INTEGER (PK)&#xa;student_id : INTEGER (FK)&#xa;date_opened : DATE&#xa;reason : ENUM&#xa;notified_to : JSON&#xa;status : ENUM" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="claims">
+          <mxGeometry y="26" width="200" height="94" as="geometry" />
+        </mxCell>
+        
+        <!-- Audit Log Table -->
+        <mxCell id="audit-log" value="audit_log" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;fillColor=#e6e6e6;strokeColor=#999999;" vertex="1" parent="1">
+          <mxGeometry x="640" y="360" width="180" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="audit-log-fields" value="+ id : INTEGER (PK)&#xa;actor : ENUM&#xa;action : VARCHAR(50)&#xa;entity : VARCHAR(50)&#xa;entity_id : INTEGER&#xa;before : JSON&#xa;after : JSON&#xa;timestamp : TIMESTAMP" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="audit-log">
+          <mxGeometry y="26" width="180" height="114" as="geometry" />
+        </mxCell>
+        
+        <!-- Relationships -->
+        <mxCell id="rel1" value="1" style="endArrow=none;html=1;curved=1;edgeStyle=orthogonalEdgeStyle;routing=orthogonal;" edge="1" parent="1" source="students-fields" target="attendance-fields">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="400" as="sourcePoint" />
+            <mxPoint x="450" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="rel1-label" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="170" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rel2" value="1" style="endArrow=none;html=1;curved=1;edgeStyle=orthogonalEdgeStyle;routing=orthogonal;" edge="1" parent="1" source="students" target="permanent-absences">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="400" as="sourcePoint" />
+            <mxPoint x="450" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="rel2-label" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="280" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rel3" value="1" style="endArrow=none;html=1;curved=1;edgeStyle=orthogonalEdgeStyle;routing=orthogonal;" edge="1" parent="1" source="students-fields" target="monthly-overrides-fields">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="400" as="sourcePoint" />
+            <mxPoint x="450" y="350" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="320" y="320" />
+              <mxPoint x="320" y="387" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="rel3-label" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="380" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="rel4" value="1" style="endArrow=none;html=1;curved=1;edgeStyle=orthogonalEdgeStyle;routing=orthogonal;" edge="1" parent="1" source="students" target="claims">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="400" y="400" as="sourcePoint" />
+            <mxPoint x="450" y="350" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="180" y="420" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <mxCell id="rel4-label" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="160" y="420" width="20" height="20" as="geometry" />
+        </mxCell>
+        
+        <!-- Notes -->
+        <mxCell id="note1" value="Core entity representing&#xa;school students" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="50" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note2" value="Daily attendance records&#xa;with automation support" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="360" y="50" width="140" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note3" value="&quot;Court&quot; system for&#xa;threshold violations" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="580" width="120" height="30" as="geometry" />
+        </mxCell>
+        
+        <mxCell id="note4" value="Complete audit trail&#xa;for all system changes" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=10;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="640" y="520" width="140" height="30" as="geometry" />
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

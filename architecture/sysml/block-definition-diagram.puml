@@ -1,0 +1,140 @@
+@startuml AttendanceSystem_BDD
+!define RECTANGLE class
+
+title School Attendance System - Block Definition Diagram
+
+package "Attendance System" {
+    
+    RECTANGLE AttendanceSystem {
+        + processAttendance()
+        + generateReports()
+        + manageStudents()
+        + handleAutomations()
+    }
+    
+    package "User Interfaces" {
+        RECTANGLE KioskTablet {
+            + searchStudent()
+            + checkIn()
+            + checkOut()
+            - touchInterface
+        }
+        
+        RECTANGLE ManagerInterface {
+            + viewDailyAttendance()
+            + overrideAttendance()
+            + manageClaims()
+            + exportReports()
+            - webInterface
+            - mobileInterface
+        }
+        
+        RECTANGLE AdminInterface {
+            + manageStudents()
+            + configurePermanentAbsences()
+            + setGlobalSettings()
+            + manageHolidays()
+        }
+    }
+    
+    package "Core Services" {
+        RECTANGLE AttendanceService {
+            + recordAttendance()
+            + updateStatus()
+            + processOverride()
+            + calculateMonthlyStats()
+        }
+        
+        RECTANGLE AutomationService {
+            + processPermanentAbsences()
+            + sendReminders()
+            + autoMarkLateness()
+            + autoMarkAbsent()
+            + autoCloseDay()
+        }
+        
+        RECTANGLE NotificationService {
+            + sendWhatsAppReminder()
+            + notifyManager()
+            + notifyCourtChair()
+        }
+        
+        RECTANGLE ClaimsService {
+            + createClaim()
+            + processClaim()
+            + checkThresholds()
+            + notifyStakeholders()
+        }
+        
+        RECTANGLE ReportService {
+            + generateDailyReport()
+            + generateMonthlyReport()
+            + exportCSV()
+        }
+    }
+    
+    package "Data Layer" {
+        RECTANGLE DatabaseService {
+            + executeQuery()
+            + manageTransactions()
+            + handleConnections()
+        }
+        
+        RECTANGLE AuditService {
+            + logAction()
+            + trackChanges()
+            + maintainHistory()
+        }
+    }
+    
+    package "External Systems" {
+        RECTANGLE WhatsAppAPI {
+            + sendMessage()
+            + validateNumber()
+        }
+        
+        RECTANGLE PostgreSQLDB {
+            + storeData()
+            + retrieveData()
+            + maintainIntegrity()
+        }
+    }
+    
+    package "Infrastructure" {
+        RECTANGLE KubernetesCluster {
+            + deployPods()
+            + manageServices()
+            + handleScaling()
+        }
+        
+        RECTANGLE HelmChart {
+            + deployApplication()
+            + manageConfiguration()
+            + handleUpgrades()
+        }
+    }
+}
+
+AttendanceSystem *-- KioskTablet
+AttendanceSystem *-- ManagerInterface  
+AttendanceSystem *-- AdminInterface
+AttendanceSystem *-- AttendanceService
+AttendanceSystem *-- AutomationService
+AttendanceSystem *-- NotificationService
+AttendanceSystem *-- ClaimsService
+AttendanceSystem *-- ReportService
+AttendanceSystem *-- DatabaseService
+AttendanceSystem *-- AuditService
+
+AttendanceService --> DatabaseService
+AutomationService --> NotificationService
+AutomationService --> AttendanceService
+ClaimsService --> NotificationService
+NotificationService --> WhatsAppAPI
+DatabaseService --> PostgreSQLDB
+DatabaseService --> AuditService
+
+KubernetesCluster *-- HelmChart
+HelmChart --> AttendanceSystem
+
+@enduml
